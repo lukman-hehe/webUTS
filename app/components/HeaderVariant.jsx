@@ -32,14 +32,14 @@ const ModernHeader = styled.header`
   border-radius: 20px;
   margin-bottom: 1.5rem;
   font-family: "Poppins", sans-serif;
+  max-width: 100%;
+  box-sizing: border-box;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 12px;
   }
 `;
 
@@ -57,10 +57,11 @@ const ModernLogo = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    gap: 0.3rem;
 
     &::before {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
 `;
@@ -71,10 +72,7 @@ const ModernNav = styled.nav`
   align-items: center;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    align-items: center;
+    display: none;
   }
 `;
 
@@ -121,11 +119,11 @@ const IconButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     
     svg {
-      font-size: 14px;
+      font-size: 11px;
     }
   }
 `;
@@ -135,7 +133,7 @@ const IconGroup = styled.div`
   gap: 0.8rem;
 
   @media (max-width: 768px) {
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
 `;
 
@@ -150,6 +148,12 @@ const MinimalHeader = styled.header`
   border-right: none;
   margin-bottom: 1.5rem;
   font-family: "Inter", sans-serif;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 0.8rem;
+  }
 `;
 
 const MinimalContainer = styled.div`
@@ -158,13 +162,6 @@ const MinimalContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: center;
-  }
 `;
 
 const MinimalLogo = styled.div`
@@ -173,6 +170,11 @@ const MinimalLogo = styled.div`
   color: #2c3e50;
   text-transform: uppercase;
   letter-spacing: 2px;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
 `;
 
 const MinimalNav = styled.nav`
@@ -180,9 +182,7 @@ const MinimalNav = styled.nav`
   gap: 3rem;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
+    display: none;
   }
 `;
 
@@ -216,6 +216,39 @@ const MinimalButton = styled.button`
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
   }
+  
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 10px;
+  }
+`;
+
+const MinimalMobileMenu = styled.button`
+  display: none;
+  background: #f0f4f8;
+  border: none;
+  color: #2c3e50;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  
+  &:hover {
+    background: #e2e8f0;
+  }
+  
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const MinimalActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 // ====== VARIANT GLASSMORPHISM: Glass effect with backdrop blur ======
@@ -233,13 +266,12 @@ const GlassHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
+  box-sizing: border-box;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    align-items: center;
-    justify-content: center;
+    padding: 0.6rem 0.8rem;
+    border-radius: 12px;
   }
 `;
 
@@ -250,6 +282,10 @@ const GlassLogo = styled.div`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const GlassNav = styled.nav`
@@ -258,9 +294,7 @@ const GlassNav = styled.nav`
   align-items: center;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+    display: none;
   }
 `;
 
@@ -296,6 +330,35 @@ const GlassSearch = styled.div`
     &::placeholder {
       color: rgba(255, 255, 255, 0.6);
     }
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const GlassMobileNav = styled.nav`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+  }
+`;
+
+const GlassMobileLink = styled.a`
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 9px;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
   }
 `;
 
@@ -347,7 +410,10 @@ export default function HeaderVariant({ variant = "modern", data }) {
                 <MinimalLink key={idx} href="#">{link}</MinimalLink>
               ))}
             </MinimalNav>
-            <MinimalButton>{headerData.buttonText}</MinimalButton>
+            <MinimalActions>
+              <MinimalButton>{headerData.buttonText}</MinimalButton>
+              <MinimalMobileMenu><FaBars /></MinimalMobileMenu>
+            </MinimalActions>
           </MinimalContainer>
         </MinimalHeader>
       );
@@ -365,6 +431,11 @@ export default function HeaderVariant({ variant = "modern", data }) {
               <input type="text" placeholder={headerData.searchPlaceholder} />
             </GlassSearch>
           </GlassNav>
+          <GlassMobileNav>
+            {headerData.links.map((link, idx) => (
+              <GlassMobileLink key={idx} href="#">{link}</GlassMobileLink>
+            ))}
+          </GlassMobileNav>
         </GlassHeader>
       );
 
@@ -372,4 +443,3 @@ export default function HeaderVariant({ variant = "modern", data }) {
       return null;
   }
 }
-

@@ -24,6 +24,13 @@ const StackedFooter = styled.footer`
   padding: 3rem 2rem 1.5rem;
   font-family: "Inter", sans-serif;
   border-top: 4px solid #0066cc;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem 0.8rem;
+  }
 `;
 
 const StackedSection = styled.div`
@@ -31,6 +38,11 @@ const StackedSection = styled.div`
   margin: 0 auto 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  @media (max-width: 768px) {
+    margin: 0 auto 1rem;
+    padding-bottom: 1rem;
+  }
 `;
 
 const StackedBrand = styled.div`
@@ -52,13 +64,15 @@ const StackedBrand = styled.div`
 
   @media (max-width: 768px) {
     text-align: center;
+    margin-bottom: 1rem;
     
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
     }
 
     p {
       max-width: 100%;
+      font-size: 12px;
     }
   }
 `;
@@ -70,9 +84,11 @@ const StackedLinks = styled.div`
   margin: 2rem 0;
 
   @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
     text-align: center;
+    justify-items: center;
   }
 `;
 
@@ -100,6 +116,18 @@ const LinkGroup = styled.div`
       color: #3498db;
     }
   }
+  
+  @media (max-width: 576px) {
+    h4 {
+      font-size: 0.75rem;
+      margin: 0 0 0.5rem;
+    }
+    
+    a {
+      margin: 0.3rem 0;
+      font-size: 11px;
+    }
+  }
 `;
 
 const StackedBottom = styled.div`
@@ -114,8 +142,10 @@ const StackedBottom = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
     text-align: center;
+    font-size: 10px;
+    padding-top: 1rem;
   }
 `;
 
@@ -139,6 +169,16 @@ const SocialIcons = styled.div`
       transform: translateY(-3px);
     }
   }
+  
+  @media (max-width: 576px) {
+    gap: 0.5rem;
+    
+    a {
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+    }
+  }
 `;
 
 /* ====== VARIANT COLUMNS: Multi-column layout ====== */
@@ -147,9 +187,12 @@ const ColumnsFooter = styled.footer`
   color: ${variantStyles.columns.color};
   padding: 4rem 3rem 2rem;
   font-family: "Poppins", sans-serif;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
-    padding: 3rem 1.5rem 2rem;
+    padding: 1rem 0.5rem 0.8rem;
   }
 `;
 
@@ -167,7 +210,9 @@ const ColumnsGrid = styled.div`
   }
 
   @media (max-width: 576px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -212,6 +257,30 @@ const ColumnBox = styled.div`
       transform: translateX(5px);
     }
   }
+  
+  @media (max-width: 576px) {
+    h3 {
+      font-size: 0.9rem;
+      margin: 0 0 0.8rem;
+      padding-bottom: 0.5rem;
+      
+      &::after {
+        width: 30px;
+        height: 2px;
+      }
+    }
+    
+    p {
+      font-size: 11px;
+      margin: 0.4rem 0;
+      line-height: 1.5;
+    }
+    
+    a {
+      font-size: 11px;
+      margin: 0.4rem 0;
+    }
+  }
 `;
 
 const ContactItem = styled.div`
@@ -252,6 +321,13 @@ const CenteredFooter = styled.footer`
   padding: 3rem 2rem;
   font-family: "Poppins", sans-serif;
   text-align: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 0.5rem;
+  }
 `;
 
 const CenteredContent = styled.div`

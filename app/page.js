@@ -601,7 +601,14 @@ export default function Page() {
               <HeaderVariant variant="modern" data={headerData.modern} />
               <CodeSnippet
                 id="header-modern"
-                code={`<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"modern"</span> <span class="attr">data</span>={headerData.modern} <span class="tag">/&gt;</span>`}
+                code={`<span class="keyword">import</span> HeaderVariant <span class="keyword">from</span> <span class="string">"./components/HeaderVariant"</span>;
+
+<span class="keyword">const</span> headerData = {
+  logo: <span class="string">"ResortHub"</span>,
+  links: [<span class="string">"Home"</span>, <span class="string">"Rooms"</span>, <span class="string">"Facilities"</span>, <span class="string">"Contact"</span>]
+};
+
+<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"modern"</span> <span class="attr">data</span>={headerData} <span class="tag">/&gt;</span>`}
               />
             </VariantCard>
 
@@ -610,7 +617,15 @@ export default function Page() {
               <HeaderVariant variant="minimal" data={headerData.minimal} />
               <CodeSnippet
                 id="header-minimal"
-                code={`<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"minimal"</span> <span class="attr">data</span>={headerData.minimal} <span class="tag">/&gt;</span>`}
+                code={`<span class="keyword">import</span> HeaderVariant <span class="keyword">from</span> <span class="string">"./components/HeaderVariant"</span>;
+
+<span class="keyword">const</span> headerData = {
+  logo: <span class="string">"RESORT"</span>,
+  links: [<span class="string">"Home"</span>, <span class="string">"Rooms"</span>, <span class="string">"About"</span>, <span class="string">"Contact"</span>],
+  buttonText: <span class="string">"Book Now"</span>
+};
+
+<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"minimal"</span> <span class="attr">data</span>={headerData} <span class="tag">/&gt;</span>`}
               />
             </VariantCard>
 
@@ -621,7 +636,15 @@ export default function Page() {
               </div>
               <CodeSnippet
                 id="header-glass"
-                code={`<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"glassmorphism"</span> <span class="attr">data</span>={headerData.glassmorphism} <span class="tag">/&gt;</span>`}
+                code={`<span class="keyword">import</span> HeaderVariant <span class="keyword">from</span> <span class="string">"./components/HeaderVariant"</span>;
+
+<span class="keyword">const</span> headerData = {
+  logo: <span class="string">"✦ Paradise Resort"</span>,
+  links: [<span class="string">"Home"</span>, <span class="string">"Explore"</span>, <span class="string">"Services"</span>],
+  searchPlaceholder: <span class="string">"Search..."</span>
+};
+
+<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"glassmorphism"</span> <span class="attr">data</span>={headerData} <span class="tag">/&gt;</span>`}
               />
             </VariantCard>
           </VariantSection>
@@ -638,7 +661,18 @@ export default function Page() {
                 <CardVariant variant="elevated" data={cardData.elevated} />
                 <CodeSnippet
                   id="card-elevated"
-                  code={`<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"elevated"</span> <span class="attr">data</span>={cardData.elevated} <span class="tag">/&gt;</span>`}
+                  code={`<span class="keyword">import</span> CardVariant <span class="keyword">from</span> <span class="string">"./components/CardVariant"</span>;
+
+<span class="keyword">const</span> cardData = {
+  title: <span class="string">"Pemandangan Laut"</span>,
+  description: <span class="string">"Panorama laut yang menakjubkan"</span>,
+  image: <span class="string">"https://example.com/image.jpg"</span>,
+  price: <span class="string">"Rp 5.250.000"</span>,
+  rating: <span class="string">"4.9"</span>,
+  badge: <span class="string">"PREMIUM"</span>
+};
+
+<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"elevated"</span> <span class="attr">data</span>={cardData} <span class="tag">/&gt;</span>`}
                 />
               </div>
 
@@ -647,7 +681,17 @@ export default function Page() {
                 <CardVariant variant="bordered" data={cardData.bordered} />
                 <CodeSnippet
                   id="card-bordered"
-                  code={`<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"bordered"</span> <span class="attr">data</span>={cardData.bordered} <span class="tag">/&gt;</span>`}
+                  code={`<span class="keyword">import</span> CardVariant <span class="keyword">from</span> <span class="string">"./components/CardVariant"</span>;
+
+<span class="keyword">const</span> cardData = {
+  title: <span class="string">"Villa Taman"</span>,
+  description: <span class="string">"Villa yang tenang dikelilingi taman tropis"</span>,
+  image: <span class="string">"https://example.com/image.jpg"</span>,
+  price: <span class="string">"Rp 6.300.000"</span>,
+  location: <span class="string">"Bali, Indonesia"</span>
+};
+
+<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"bordered"</span> <span class="attr">data</span>={cardData} <span class="tag">/&gt;</span>`}
                 />
               </div>
 
@@ -656,7 +700,17 @@ export default function Page() {
                 <CardVariant variant="gradient" data={cardData.gradient} />
                 <CodeSnippet
                   id="card-gradient"
-                  code={`<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"gradient"</span> <span class="attr">data</span>={cardData.gradient} <span class="tag">/&gt;</span>`}
+                  code={`<span class="keyword">import</span> CardVariant <span class="keyword">from</span> <span class="string">"./components/CardVariant"</span>;
+
+<span class="keyword">const</span> cardData = {
+  title: <span class="string">"Surga Senja"</span>,
+  description: <span class="string">"Pemandangan matahari terbenam yang memukau"</span>,
+  image: <span class="string">"https://example.com/image.jpg"</span>,
+  price: <span class="string">"Rp 4.200.000"</span>,
+  rating: <span class="string">"4.8"</span>
+};
+
+<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"gradient"</span> <span class="attr">data</span>={cardData} <span class="tag">/&gt;</span>`}
                 />
               </div>
             </VariantGrid>
@@ -674,17 +728,25 @@ export default function Page() {
               <ButtonVariant variant="solid" data={buttonData.solid} onClick={handleSolidClick} />
               <CodeSnippet
                 id="button-solid"
-                code={`// Dynamic State Logic
-const [status, setStatus] = useState('${loadingState}');
+                code={`<span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">"react"</span>;
+<span class="keyword">import</span> ButtonVariant <span class="keyword">from</span> <span class="string">"./components/ButtonVariant"</span>;
+<span class="keyword">import</span> { FaArrowRight, FaSpinner, FaCheck } <span class="keyword">from</span> <span class="string">"react-icons/fa"</span>;
 
-<ButtonVariant 
-  variant="solid" 
-  data={{ 
-    label: status === 'loading' ? 'Memproses...' : 'Konfirmasi',
-    icon: status === 'loading' ? <FaSpinner /> : <FaArrowRight />
-  }} 
-  onClick={handleSolidClick} 
-/>`}
+<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
+  <span class="keyword">const</span> [status, setStatus] = useState(<span class="string">"idle"</span>);
+
+  <span class="keyword">const</span> handleClick = () => {
+    setStatus(<span class="string">"loading"</span>);
+    setTimeout(() => setStatus(<span class="string">"success"</span>), 2000);
+  };
+
+  <span class="keyword">const</span> buttonData = {
+    label: status === <span class="string">"loading"</span> ? <span class="string">"Memproses..."</span> : status === <span class="string">"success"</span> ? <span class="string">"Berhasil!"</span> : <span class="string">"Konfirmasi Pemesanan"</span>,
+    icon: status === <span class="string">"loading"</span> ? <FaSpinner /> : status === <span class="string">"success"</span> ? <FaCheck /> : <FaArrowRight />
+  };
+
+  <span class="keyword">return</span> <span class="tag">&lt;ButtonVariant</span> <span class="attr">variant</span>=<span class="string">"solid"</span> <span class="attr">data</span>={buttonData} <span class="attr">onClick</span>={handleClick} <span class="tag">/&gt;</span>;
+}`}
               />
             </VariantCard>
             <VariantCard>
@@ -692,17 +754,26 @@ const [status, setStatus] = useState('${loadingState}');
               <ButtonVariant variant="outline" data={buttonData.outline} onClick={handleOutlineClick} />
               <CodeSnippet
                 id="button-outline"
-                code={`// Toggle Logic
-const [isFav, setIsFav] = useState(${isFavorite});
+                code={`<span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">"react"</span>;
+<span class="keyword">import</span> ButtonVariant <span class="keyword">from</span> <span class="string">"./components/ButtonVariant"</span>;
+<span class="keyword">import</span> { FaHeart, FaCheck } <span class="keyword">from</span> <span class="string">"react-icons/fa"</span>;
 
-<ButtonVariant 
-  variant="outline" 
-  data={{ 
-    label: isFav ? 'Tersimpan' : 'Favorit',
-    icon: isFav ? <FaHeart /> : <FaCheck />
-  }} 
-  onClick={() => setIsFav(!isFav)} 
-/>`}
+<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
+  <span class="keyword">const</span> [isFavorite, setIsFavorite] = useState(<span class="keyword">false</span>);
+
+  <span class="keyword">const</span> buttonData = {
+    label: isFavorite ? <span class="string">"Tersimpan di Favorit"</span> : <span class="string">"Tambah ke Favorit"</span>,
+    icon: isFavorite ? <FaHeart color=<span class="string">"red"</span> /> : <FaCheck />
+  };
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;ButtonVariant</span>
+      <span class="attr">variant</span>=<span class="string">"outline"</span>
+      <span class="attr">data</span>={buttonData}
+      <span class="attr">onClick</span>={() => setIsFavorite(!isFavorite)}
+    <span class="tag">/&gt;</span>
+  );
+}`}
               />
             </VariantCard>
             <VariantCard>
@@ -710,16 +781,37 @@ const [isFav, setIsFav] = useState(${isFavorite});
               <ButtonVariant variant="pill" data={buttonData.pill} onClick={handlePillClick} />
               <CodeSnippet
                 id="button-pill"
-                code={`// Progress Logic
-const [progress, setProgress] = useState(${downloadProgress});
+                code={`<span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">"react"</span>;
+<span class="keyword">import</span> ButtonVariant <span class="keyword">from</span> <span class="string">"./components/ButtonVariant"</span>;
+<span class="keyword">import</span> { FaDownload, FaSpinner, FaCheck } <span class="keyword">from</span> <span class="string">"react-icons/fa"</span>;
 
-<ButtonVariant 
-  variant="pill" 
-  data={{ 
-    label: \`Downloading \${progress}%\`
-  }} 
-  onClick={startDownload} 
-/>`}
+<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
+  <span class="keyword">const</span> [progress, setProgress] = useState(0);
+  <span class="keyword">const</span> [isDownloading, setIsDownloading] = useState(<span class="keyword">false</span>);
+
+  <span class="keyword">const</span> startDownload = () => {
+    <span class="keyword">if</span> (isDownloading) <span class="keyword">return</span>;
+    setIsDownloading(<span class="keyword">true</span>);
+    setProgress(0);
+    <span class="keyword">const</span> interval = setInterval(() => {
+      setProgress(prev => {
+        <span class="keyword">if</span> (prev >= 100) {
+          clearInterval(interval);
+          setIsDownloading(<span class="keyword">false</span>);
+          <span class="keyword">return</span> 100;
+        }
+        <span class="keyword">return</span> prev + 10;
+      });
+    }, 200);
+  };
+
+  <span class="keyword">const</span> buttonData = {
+    label: isDownloading ? \`Downloading \${progress}%\` : progress === 100 ? <span class="string">"Selesai!"</span> : <span class="string">"Download"</span>,
+    icon: isDownloading ? <FaSpinner /> : progress === 100 ? <FaCheck /> : <FaDownload />
+  };
+
+  <span class="keyword">return</span> <span class="tag">&lt;ButtonVariant</span> <span class="attr">variant</span>=<span class="string">"pill"</span> <span class="attr">data</span>={buttonData} <span class="attr">onClick</span>={startDownload} <span class="tag">/&gt;</span>;
+}`}
               />
             </VariantCard>
           </VariantSection>
@@ -734,7 +826,29 @@ const [progress, setProgress] = useState(${downloadProgress});
               <FooterVariant variant="stacked" data={footerData.stacked} />
               <CodeSnippet
                 id="footer-stacked"
-                code={`<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"stacked"</span> <span class="attr">data</span>={footerData.stacked} <span class="tag">/&gt;</span>`}
+                code={`<span class="keyword">import</span> FooterVariant <span class="keyword">from</span> <span class="string">"./components/FooterVariant"</span>;
+
+<span class="keyword">const</span> footerData = {
+  brandName: <span class="string">"Paradise Resort"</span>,
+  brandDesc: <span class="string">"Rasakan kemewahan dan kenyamanan di jantung surga."</span>,
+  linkGroups: [
+    {
+      title: <span class="string">"Tautan Cepat"</span>,
+      links: [<span class="string">"Beranda"</span>, <span class="string">"Kamar"</span>, <span class="string">"Fasilitas"</span>, <span class="string">"Galeri"</span>]
+    },
+    {
+      title: <span class="string">"Layanan"</span>,
+      links: [<span class="string">"Spa & Wellness"</span>, <span class="string">"Restoran"</span>, <span class="string">"Bar Kolam"</span>]
+    },
+    {
+      title: <span class="string">"Bantuan"</span>,
+      links: [<span class="string">"Hubungi Kami"</span>, <span class="string">"FAQ"</span>, <span class="string">"Kebijakan Privasi"</span>]
+    }
+  ],
+  copyright: <span class="string">"© 2025 Paradise Resort. Hak cipta dilindungi."</span>
+};
+
+<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"stacked"</span> <span class="attr">data</span>={footerData} <span class="tag">/&gt;</span>`}
               />
             </VariantCard>
             <VariantCard>
@@ -742,7 +856,22 @@ const [progress, setProgress] = useState(${downloadProgress});
               <FooterVariant variant="columns" data={footerData.columns} />
               <CodeSnippet
                 id="footer-columns"
-                code={`<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"columns"</span> <span class="attr">data</span>={footerData.columns} <span class="tag">/&gt;</span>`}
+                code={`<span class="keyword">import</span> FooterVariant <span class="keyword">from</span> <span class="string">"./components/FooterVariant"</span>;
+
+<span class="keyword">const</span> footerData = {
+  aboutTitle: <span class="string">"Tentang Resort"</span>,
+  aboutDesc: <span class="string">"Resort tepi pantai premium dengan fasilitas kelas dunia."</span>,
+  phone: <span class="string">"+62 (555) 123-4567"</span>,
+  email: <span class="string">"info@paradiseresort.com"</span>,
+  address: <span class="string">"Jl. Pantai No. 123, Pulau Tropis"</span>,
+  columns: [
+    { title: <span class="string">"Jelajahi"</span>, links: [<span class="string">"Akomodasi"</span>, <span class="string">"Kuliner"</span>, <span class="string">"Acara"</span>] },
+    { title: <span class="string">"Kebijakan"</span>, links: [<span class="string">"Pemesanan"</span>, <span class="string">"Pembatalan"</span>, <span class="string">"Privasi"</span>] },
+    { title: <span class="string">"Newsletter"</span>, desc: <span class="string">"Berlangganan untuk penawaran eksklusif"</span> }
+  ]
+};
+
+<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"columns"</span> <span class="attr">data</span>={footerData} <span class="tag">/&gt;</span>`}
               />
             </VariantCard>
             <VariantCard>
@@ -750,7 +879,16 @@ const [progress, setProgress] = useState(${downloadProgress});
               <FooterVariant variant="centered" data={footerData.centered} />
               <CodeSnippet
                 id="footer-centered"
-                code={`<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"centered"</span> <span class="attr">data</span>={footerData.centered} <span class="tag">/&gt;</span>`}
+                code={`<span class="keyword">import</span> FooterVariant <span class="keyword">from</span> <span class="string">"./components/FooterVariant"</span>;
+
+<span class="keyword">const</span> footerData = {
+  logo: <span class="string">"✦ PARADISE ✦"</span>,
+  tagline: <span class="string">"Tempat kemewahan bertemu ketenangan."</span>,
+  links: [<span class="string">"Beranda"</span>, <span class="string">"Kamar"</span>, <span class="string">"Kuliner"</span>, <span class="string">"Spa"</span>, <span class="string">"Acara"</span>, <span class="string">"Kontak"</span>],
+  copyright: <span class="string">"© 2025 Paradise Resort. Hak cipta dilindungi."</span>
+};
+
+<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"centered"</span> <span class="attr">data</span>={footerData} <span class="tag">/&gt;</span>`}
               />
             </VariantCard>
           </VariantSection>
@@ -768,7 +906,16 @@ const [progress, setProgress] = useState(${downloadProgress});
                 </SidebarPreview>
                 <CodeSnippet
                   id="sidebar-compact"
-                  code={`<span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"compact"</span> <span class="attr">onSelect</span>={<span class="keyword">(item)</span> <span class="keyword">=&gt;</span> <span class="keyword">console.log</span>(item)} <span class="tag">/&gt;</span>`}
+                  code={`<span class="keyword">import</span> SidebarVariant <span class="keyword">from</span> <span class="string">"./components/SidebarVariant"</span>;
+
+<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
+  <span class="keyword">const</span> handleSelect = (item) => {
+    console.log(<span class="string">"Selected:"</span>, item);
+    <span class="comment">// Handle navigation or state change</span>
+  };
+
+  <span class="keyword">return</span> <span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"compact"</span> <span class="attr">onSelect</span>={handleSelect} <span class="tag">/&gt;</span>;
+}`}
                 />
               </div>
               <div>
@@ -778,7 +925,16 @@ const [progress, setProgress] = useState(${downloadProgress});
                 </SidebarPreview>
                 <CodeSnippet
                   id="sidebar-expanded"
-                  code={`<span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"expanded"</span> <span class="attr">onSelect</span>={<span class="keyword">(item)</span> <span class="keyword">=&gt;</span> <span class="keyword">console.log</span>(item)} <span class="tag">/&gt;</span>`}
+                  code={`<span class="keyword">import</span> SidebarVariant <span class="keyword">from</span> <span class="string">"./components/SidebarVariant"</span>;
+
+<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
+  <span class="keyword">const</span> handleSelect = (item) => {
+    console.log(<span class="string">"Selected:"</span>, item);
+    <span class="comment">// Handle navigation or state change</span>
+  };
+
+  <span class="keyword">return</span> <span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"expanded"</span> <span class="attr">onSelect</span>={handleSelect} <span class="tag">/&gt;</span>;
+}`}
                 />
               </div>
               <div>
@@ -788,7 +944,16 @@ const [progress, setProgress] = useState(${downloadProgress});
                 </SidebarPreview>
                 <CodeSnippet
                   id="sidebar-floating"
-                  code={`<span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"floating"</span> <span class="attr">onSelect</span>={<span class="keyword">(item)</span> <span class="keyword">=&gt;</span> <span class="keyword">console.log</span>(item)} <span class="tag">/&gt;</span>`}
+                  code={`<span class="keyword">import</span> SidebarVariant <span class="keyword">from</span> <span class="string">"./components/SidebarVariant"</span>;
+
+<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
+  <span class="keyword">const</span> handleSelect = (item) => {
+    console.log(<span class="string">"Selected:"</span>, item);
+    <span class="comment">// Handle navigation or state change</span>
+  };
+
+  <span class="keyword">return</span> <span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"floating"</span> <span class="attr">onSelect</span>={handleSelect} <span class="tag">/&gt;</span>;
+}`}
                 />
               </div>
             </SidebarGrid>
