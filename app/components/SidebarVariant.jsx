@@ -46,6 +46,12 @@ const CompactSidebar = styled.aside`
   position: sticky;
   top: 0;
   border-right: 3px solid #3498db;
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    height: 100%;
+    padding: 1rem 0;
+  }
 `;
 
 const CompactTitle = styled.div`
@@ -56,6 +62,11 @@ const CompactTitle = styled.div`
   margin-bottom: 2rem;
   letter-spacing: 2px;
   color: #3498db;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const CompactItem = styled.button`
@@ -99,6 +110,19 @@ const CompactItem = styled.button`
   
   &:hover::after {
     opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    
+    svg {
+      font-size: 18px;
+    }
+
+    &::after {
+      display: none;
+    }
   }
 `;
 

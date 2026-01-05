@@ -33,6 +33,10 @@ const ElevatedCard = styled.div`
     transform: translateY(-10px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const ElevatedImageWrapper = styled.div`
@@ -109,6 +113,14 @@ const Price = styled.div`
     font-weight: 400;
     color: #95a5a6;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+
+    span {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const Rating = styled.div`
@@ -133,6 +145,10 @@ const BorderedCard = styled.div`
   &:hover {
     border-color: #6c757d;
     box-shadow: 0 8px 24px rgba(108, 117, 125, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
   }
 `;
 
@@ -185,12 +201,24 @@ const BorderedFooter = styled.div`
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 2px solid #dee2e6;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
 `;
 
 const BorderedPrice = styled.div`
   font-size: 1.8rem;
   font-weight: 800;
   color: #0066cc;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const BookButton = styled.button`
@@ -223,6 +251,14 @@ const GradientCard = styled.div`
   
   &:hover {
     transform: scale(1.05) rotate(2deg);
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    
+    &:hover {
+      transform: none;
+    }
   }
 `;
 
@@ -267,6 +303,10 @@ const GradientPrice = styled.div`
   font-size: 2rem;
   font-weight: 900;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const GradientRating = styled.div`

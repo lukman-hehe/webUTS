@@ -55,10 +55,22 @@ const SolidButton = styled.button`
   svg {
     font-size: 18px;
     transition: transform 0.3s;
+    flex-shrink: 0;
   }
   
   &:hover svg {
     transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 13px;
+    gap: 0.5rem;
+    width: 100%;
+
+    svg {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -109,10 +121,18 @@ const OutlineButton = styled.button`
   
   svg {
     transition: transform 0.3s;
+    flex-shrink: 0;
   }
   
   &:hover svg {
     transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 13px;
+    gap: 0.5rem;
+    width: 100%;
   }
 `;
 
@@ -166,11 +186,19 @@ const PillButton = styled.button`
   
   svg {
     animation: bounce 2s infinite;
+    flex-shrink: 0;
   }
   
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.9rem 2rem;
+    font-size: 13px;
+    gap: 0.5rem;
+    width: 100%;
   }
 `;
 
@@ -183,7 +211,7 @@ export default function ButtonVariant({ variant = "solid", onClick, data }) {
           {data?.icon || <FaChevronRight />}
         </SolidButton>
       );
-    
+
     case "outline":
       return (
         <OutlineButton onClick={onClick}>
@@ -191,7 +219,7 @@ export default function ButtonVariant({ variant = "solid", onClick, data }) {
           <span>{data?.label || "Tambah ke Favorit"}</span>
         </OutlineButton>
       );
-    
+
     case "pill":
       return (
         <PillButton onClick={onClick}>
@@ -199,7 +227,7 @@ export default function ButtonVariant({ variant = "solid", onClick, data }) {
           <span>{data?.label || "Unduh"}</span>
         </PillButton>
       );
-    
+
     default:
       return null;
   }

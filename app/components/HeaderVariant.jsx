@@ -38,6 +38,8 @@ const ModernHeader = styled.header`
     gap: 1.5rem;
     padding: 1.5rem;
     text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -53,6 +55,14 @@ const ModernLogo = styled.div`
     content: "🏨";
     font-size: 2rem;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+
+    &::before {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const ModernNav = styled.nav`
@@ -64,6 +74,7 @@ const ModernNav = styled.nav`
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    align-items: center;
   }
 `;
 
@@ -108,11 +119,24 @@ const IconButton = styled.button`
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 36px;
+    
+    svg {
+      font-size: 14px;
+    }
+  }
 `;
 
 const IconGroup = styled.div`
   display: flex;
   gap: 0.8rem;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
 `;
 
 // ====== VARIANT MINIMAL: Clean centered header ======
@@ -138,6 +162,8 @@ const MinimalContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -212,6 +238,8 @@ const GlassHeader = styled.header`
     flex-direction: column;
     gap: 1.5rem;
     padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -232,6 +260,7 @@ const GlassNav = styled.nav`
   @media (max-width: 768px) {
     flex-direction: column;
     width: 100%;
+    align-items: center;
   }
 `;
 

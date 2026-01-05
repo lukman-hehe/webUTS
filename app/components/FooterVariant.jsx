@@ -49,6 +49,18 @@ const StackedBrand = styled.div`
     font-size: 14px;
     max-width: 400px;
   }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      max-width: 100%;
+    }
+  }
 `;
 
 const StackedLinks = styled.div`
@@ -56,6 +68,12 @@ const StackedLinks = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin: 2rem 0;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
 `;
 
 const LinkGroup = styled.div`

@@ -22,8 +22,8 @@ import SidebarVariant from "./components/SidebarVariant";
 // HEADER UTAMA (bukan komponen variant)
 const MainHeader = styled.header`
   width: 100%;
-  background: var(--blue-alpha-200);
-  color: var(--foreground);
+  background: #002244;
+  color: white;
   text-align: center;
   padding: 1rem 0;
   font-size: 1.5rem;
@@ -31,13 +31,19 @@ const MainHeader = styled.header`
   letter-spacing: 1px;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+    margin-bottom: 1rem;
+  }
 `;
 
 // FOOTER UTAMA (bukan komponen variant)
 const MainFooter = styled.footer`
   width: 100%;
-  background: var(--blue-alpha-200);
-  color: var(--foreground);
+  background: #002244;
+  color: white;
   text-align: center;
   padding: 1rem 0;
   font-size: 1.2rem;
@@ -45,6 +51,12 @@ const MainFooter = styled.footer`
   letter-spacing: 1px;
   border-radius: 8px;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    margin-top: 1.5rem;
+  }
 `;
 
 const Container = styled.div`
@@ -220,6 +232,12 @@ const VariantCard = styled.div`
   border-radius: 12px;
   border: 2px solid var(--blue-alpha-200);
   margin-bottom: 1.5rem;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
 `;
 
 const VariantLabel = styled.div`
@@ -229,6 +247,11 @@ const VariantLabel = styled.div`
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const CodeSection = styled.div`
@@ -248,6 +271,12 @@ const CodeBlock = styled.div`
   padding: 1.2rem;
   position: relative;
   overflow-x: auto;
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    padding-top: 2.8rem;
+    border-radius: 6px;
+  }
 `;
 
 const CodeContent = styled.pre`
@@ -256,6 +285,8 @@ const CodeContent = styled.pre`
   font-size: 14px;
   line-height: 1.6;
   color: #d4d4d4;
+  white-space: pre-wrap;
+  word-break: break-word;
 
   .keyword {
     color: #569cd6;
@@ -269,12 +300,17 @@ const CodeContent = styled.pre`
   .attr {
     color: #9cdcfe;
   }
+
+  @media (max-width: 768px) {
+    font-size: 11px;
+    line-height: 1.5;
+  }
 `;
 
 const CopyButton = styled.button`
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
   background: ${({ $copied }) => ($copied ? "#10b981" : "#3b82f6")};
   color: white;
   border: none;
@@ -287,6 +323,7 @@ const CopyButton = styled.button`
   align-items: center;
   gap: 0.4rem;
   transition: all 0.3s;
+  z-index: 2;
 
   &:hover {
     background: ${({ $copied }) => ($copied ? "#059669" : "#2563eb")};
@@ -294,6 +331,16 @@ const CopyButton = styled.button`
 
   svg {
     font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 11px;
+    gap: 0.3rem;
+
+    svg {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -313,6 +360,11 @@ const SidebarGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 `;
 
 const SidebarPreview = styled.div`
@@ -321,6 +373,15 @@ const SidebarPreview = styled.div`
   border-radius: 12px;
   border: 2px solid var(--blue-alpha-200);
   background: var(--blue-alpha-100);
+
+  @media (max-width: 768px) {
+    height: 350px;
+    
+    > * {
+      transform: scale(0.85);
+      transform-origin: top left;
+    }
+  }
 `;
 
 export default function Page() {
