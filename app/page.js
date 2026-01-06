@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
   FaHome,
@@ -12,6 +12,13 @@ import {
   FaCheck,
   FaHeart,
   FaSpinner,
+  FaRocket,
+  FaDownload,
+  FaFolder,
+  FaCode,
+  FaTerminal,
+  FaMoon,
+  FaSun,
 } from "react-icons/fa";
 import HeaderVariant from "./components/HeaderVariant";
 import CardVariant from "./components/CardVariant";
@@ -135,6 +142,33 @@ const SidebarTitle = styled.h2`
   text-align: left;
   margin: 0 0 2rem 2rem;
   letter-spacing: 1px;
+`;
+
+const ThemeToggle = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 2rem 1.5rem 2rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, ${({ $isDark }) => $isDark ? '#64ffda' : '#ffd700'} 0%, ${({ $isDark }) => $isDark ? '#4ecdc4' : '#ffa500'} 100%);
+  border: none;
+  border-radius: 25px;
+  color: ${({ $isDark }) => $isDark ? '#0a192f' : '#003366'};
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  svg {
+    font-size: 1rem;
+  }
 `;
 
 const ComponentsLabel = styled.div`
@@ -384,10 +418,204 @@ const SidebarPreview = styled.div`
   }
 `;
 
+// Styled Components untuk Getting Started Section
+const GettingStartedSection = styled.div`
+  background: var(--background);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+`;
+
+const IntroCard = styled.div`
+  background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+`;
+
+const StepCard = styled.div`
+  background: var(--blue-alpha-100);
+  border: 2px solid var(--blue-alpha-200);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+`;
+
+const StepHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  .step-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .step-icon {
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+  }
+`;
+
+const StepContent = styled.div`
+  color: var(--secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+`;
+
+const ComponentListGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+`;
+
+const ComponentItem = styled.div`
+  background: white;
+  border: 1px solid var(--blue-alpha-200);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+    border-color: var(--primary);
+  }
+
+  svg {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+
+    svg {
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-size: 0.75rem;
+    }
+  }
+`;
+
 export default function Page() {
-  const [activeMenu, setActiveMenu] = useState("header");
+  const [activeMenu, setActiveMenu] = useState("getting-started");
   const [copiedStates, setCopiedStates] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State untuk mobile sidebar
+  const [isDarkMode, setIsDarkMode] = useState(false); // State untuk dark mode
+
+  // Effect untuk mengatur tema
+  useEffect(() => {
+    // Cek preferensi tema dari localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = isDarkMode ? 'light' : 'dark';
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   // --- STATE UNTUK BUTTON DYNAMIC ---
 
@@ -537,6 +765,7 @@ export default function Page() {
   };
 
   const menuItems = [
+    { id: "getting-started", label: "Getting Started", icon: <FaRocket /> },
     { id: "button", label: "Button", icon: <FaArrowRight /> },
     { id: "card", label: "Card", icon: <FaBed /> },
     { id: "header", label: "Header", icon: <FaHome /> },
@@ -591,6 +820,77 @@ export default function Page() {
 
   const renderContent = () => {
     switch (activeMenu) {
+      case "getting-started":
+        return (
+          <GettingStartedSection>
+            <IntroCard>
+              <h2>🎨 Selamat Datang di Design System</h2>
+              <p>
+                Design System ini menyediakan berbagai komponen UI yang siap pakai untuk membangun
+                website hotel/resort yang modern dan responsif. Ikuti panduan di bawah ini untuk
+                memulai menggunakan komponen-komponen yang tersedia.
+              </p>
+            </IntroCard>
+
+            <SectionTitle>📦 Cara Instalasi</SectionTitle>
+
+            <StepCard>
+              <StepHeader>
+                <div className="step-icon"><FaTerminal /></div>
+                <h3>Install Package</h3>
+              </StepHeader>
+              <StepContent>
+                <p>Install design system ini dengan menjalankan perintah berikut di terminal:</p>
+              </StepContent>
+              <CodeSnippet
+                id="install-package"
+                code={`npm install styled-lukman`}
+              />
+            </StepCard>
+
+            <SectionTitle>🧩 Komponen yang Tersedia</SectionTitle>
+            <StepCard>
+              <StepContent>
+                <p>Klik komponen di bawah untuk melihat contoh dan cara penggunaannya:</p>
+              </StepContent>
+              <ComponentListGrid>
+                <ComponentItem onClick={() => setActiveMenu("header")}>
+                  <FaHome />
+                  <span>Header</span>
+                </ComponentItem>
+                <ComponentItem onClick={() => setActiveMenu("card")}>
+                  <FaBed />
+                  <span>Card</span>
+                </ComponentItem>
+                <ComponentItem onClick={() => setActiveMenu("button")}>
+                  <FaArrowRight />
+                  <span>Button</span>
+                </ComponentItem>
+                <ComponentItem onClick={() => setActiveMenu("footer")}>
+                  <FaInfoCircle />
+                  <span>Footer</span>
+                </ComponentItem>
+                <ComponentItem onClick={() => setActiveMenu("sidebar")}>
+                  <FaBars />
+                  <span>Sidebar</span>
+                </ComponentItem>
+              </ComponentListGrid>
+            </StepCard>
+
+            <SectionTitle>💡 Tips Penggunaan</SectionTitle>
+            <StepCard>
+              <StepContent>
+                <ul>
+                  <li><strong>Variant:</strong> Setiap komponen memiliki beberapa variant yang bisa dipilih melalui prop <code>variant</code></li>
+                  <li><strong>Data:</strong> Kirimkan data melalui prop <code>data</code> untuk mengisi konten komponen</li>
+                  <li><strong>Responsif:</strong> Semua komponen sudah dioptimalkan untuk tampilan mobile</li>
+                  <li><strong>Kustomisasi:</strong> Anda dapat memodifikasi styled-components sesuai kebutuhan</li>
+                </ul>
+              </StepContent>
+            </StepCard>
+          </GettingStartedSection>
+        );
+
       case "header":
         return (
           <VariantSection>
@@ -977,6 +1277,10 @@ export default function Page() {
 
         <Sidebar $isOpen={isSidebarOpen}>
           <SidebarTitle>SIDEBAR</SidebarTitle>
+          <ThemeToggle $isDark={isDarkMode} onClick={toggleTheme}>
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </ThemeToggle>
           <ComponentsLabel>Components</ComponentsLabel>
           {menuItems.map((item) => (
             <MenuItem
@@ -1002,7 +1306,7 @@ export default function Page() {
           {renderContent()}
         </MainContent>
       </Container>
-      <MainFooter>FOOTER</MainFooter>
+      <MainFooter>Lukman Hairomin</MainFooter>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import "./globals.css"
 
 export const metadata = {
-  title: "Style Playground",
+  title: "yourman components",
 }
 
 export default function RootLayout({ children }) {

@@ -3,15 +3,22 @@
   --foreground: #003366;
   --primary: #0070f3;
   --secondary: #0056b3;
+  --blue-alpha-100: rgba(0, 112, 243, 0.08);
+  --blue-alpha-200: rgba(0, 112, 243, 0.2);
+  --card-bg: white;
+  --card-border: rgba(0, 112, 243, 0.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a192f;
-    --foreground: #e6f1ff;
-    --primary: #64ffda;
-    --secondary: #8892b0;
-  }
+/* Dark Theme */
+[data-theme="dark"] {
+  --background: #0a192f;
+  --foreground: #e6f1ff;
+  --primary: #64ffda;
+  --secondary: #8892b0;
+  --blue-alpha-100: rgba(100, 255, 218, 0.08);
+  --blue-alpha-200: rgba(100, 255, 218, 0.2);
+  --card-bg: #112240;
+  --card-border: rgba(100, 255, 218, 0.2);
 }
 
 body {
@@ -19,6 +26,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--background);
   color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @keyframes spin {
