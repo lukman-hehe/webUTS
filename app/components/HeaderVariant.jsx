@@ -362,6 +362,14 @@ const GlassMobileLink = styled.a`
   }
 `;
 
+// Helper function to normalize links (support both string and { label, href } format)
+const normalizeLink = (link) => {
+  if (typeof link === 'string') {
+    return { label: link, href: '#' };
+  }
+  return { label: link.label, href: link.href || '#' };
+};
+
 export default function HeaderVariant({ variant = "modern", data }) {
   const defaultData = {
     modern: {
@@ -388,9 +396,10 @@ export default function HeaderVariant({ variant = "modern", data }) {
         <ModernHeader>
           <ModernLogo>{headerData.logo}</ModernLogo>
           <ModernNav>
-            {headerData.links.map((link, idx) => (
-              <ModernLink key={idx} href="#">{link}</ModernLink>
-            ))}
+            {headerData.links.map((link, idx) => {
+              const { label, href } = normalizeLink(link);
+              return <ModernLink key={idx} href={href}>{label}</ModernLink>;
+            })}
           </ModernNav>
           <IconGroup>
             <IconButton><FaSearch /></IconButton>
@@ -406,9 +415,10 @@ export default function HeaderVariant({ variant = "modern", data }) {
           <MinimalContainer>
             <MinimalLogo>{headerData.logo}</MinimalLogo>
             <MinimalNav>
-              {headerData.links.map((link, idx) => (
-                <MinimalLink key={idx} href="#">{link}</MinimalLink>
-              ))}
+              {headerData.links.map((link, idx) => {
+                const { label, href } = normalizeLink(link);
+                return <MinimalLink key={idx} href={href}>{label}</MinimalLink>;
+              })}
             </MinimalNav>
             <MinimalActions>
               <MinimalButton>{headerData.buttonText}</MinimalButton>
@@ -423,18 +433,20 @@ export default function HeaderVariant({ variant = "modern", data }) {
         <GlassHeader>
           <GlassLogo>{headerData.logo}</GlassLogo>
           <GlassNav>
-            {headerData.links.map((link, idx) => (
-              <GlassLink key={idx} href="#">{link}</GlassLink>
-            ))}
+            {headerData.links.map((link, idx) => {
+              const { label, href } = normalizeLink(link);
+              return <GlassLink key={idx} href={href}>{label}</GlassLink>;
+            })}
             <GlassSearch>
               <FaSearch size={14} />
               <input type="text" placeholder={headerData.searchPlaceholder} />
             </GlassSearch>
           </GlassNav>
           <GlassMobileNav>
-            {headerData.links.map((link, idx) => (
-              <GlassMobileLink key={idx} href="#">{link}</GlassMobileLink>
-            ))}
+            {headerData.links.map((link, idx) => {
+              const { label, href } = normalizeLink(link);
+              return <GlassMobileLink key={idx} href={href}>{label}</GlassMobileLink>;
+            })}
           </GlassMobileNav>
         </GlassHeader>
       );

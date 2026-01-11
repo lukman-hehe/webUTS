@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import Link from "next/link";
 import {
   FaHome,
   FaBed,
@@ -30,6 +31,24 @@ const variantStyles = {
     title: "Components",
   },
 };
+
+// Default icons mapping
+const defaultIcons = {
+  header: <FaHome />,
+  card: <FaBed />,
+  button: <FaConciergeBell />,
+  footer: <FaInfoCircle />,
+  sidebar: <FaUser />,
+};
+
+// Default items fallback
+const defaultItems = [
+  { name: "Header", href: "#", icon: <FaHome /> },
+  { name: "Card", href: "#", icon: <FaBed /> },
+  { name: "Button", href: "#", icon: <FaConciergeBell /> },
+  { name: "Footer", href: "#", icon: <FaInfoCircle /> },
+  { name: "Sidebar", href: "#", icon: <FaUser /> },
+];
 
 const CompactSidebar = styled.aside`
   font-family: "Inter", sans-serif;
@@ -68,7 +87,65 @@ const CompactTitle = styled.div`
   }
 `;
 
-const CompactItem = styled.button`
+const CompactItemLink = styled(Link)`
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: inherit;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  
+  svg {
+    font-size: 22px;
+  }
+  
+  &:hover {
+    background: ${variantStyles.compact.hover};
+    transform: scale(1.1);
+  }
+  
+  &::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 70px;
+    background: #2c3e50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1000;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    
+    svg {
+      font-size: 18px;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+`;
+
+const CompactItemButton = styled.button`
   width: 50px;
   height: 50px;
   display: flex;
@@ -169,7 +246,47 @@ const SectionLabel = styled.div`
   font-weight: 700;
 `;
 
-const ExpandedItem = styled.button`
+const ExpandedItemLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  background: none;
+  border: none;
+  color: inherit;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  &:hover {
+    background: ${variantStyles.expanded.hover};
+    transform: translateX(5px);
+  }
+`;
+
+const ExpandedItemButton = styled.button`
   width: 100%;
   display: flex;
   align-items: center;
@@ -248,7 +365,45 @@ const FloatingTitle = styled.h3`
   color: #2c3e50;
 `;
 
-const FloatingItem = styled.button`
+const FloatingItemLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: none;
+  border: none;
+  color: inherit;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  
+  svg {
+    font-size: 20px;
+    padding: 8px;
+    background: linear-gradient(135deg, #667eea20, #764ba220);
+    border-radius: 10px;
+    color: #667eea;
+    transition: all 0.3s;
+  }
+  
+  &:hover {
+    background: ${variantStyles.floating.hover};
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:hover svg {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: rotate(10deg);
+  }
+`;
+
+const FloatingItemButton = styled.button`
   width: 100%;
   display: flex;
   align-items: center;
@@ -285,50 +440,134 @@ const FloatingItem = styled.button`
   }
 `;
 
-export default function SidebarVariant({ variant = "compact", onSelect }) {
-  const items = [
-    { name: "Header", icon: <FaHome /> },
-    { name: "Card", icon: <FaBed /> },
-    { name: "Button", icon: <FaConciergeBell /> },
-    { name: "Footer", icon: <FaInfoCircle /> },
-    { name: "Sidebar", icon: <FaUser /> },
-  ];
+// Helper function to get icon for an item
+const getItemIcon = (item) => {
+  if (item.icon) return item.icon;
+  const name = (item.name || item.label || "").toLowerCase();
+  return defaultIcons[name] || <FaHome />;
+};
+
+// Helper function to get item display name
+const getItemName = (item) => {
+  return item.name || item.label || "Menu";
+};
+
+export default function SidebarVariant({ variant = "compact", items, onSelect, title }) {
+  // Use provided items or fallback to defaults
+  const menuItems = items && items.length > 0 ? items : defaultItems;
+
+  // Get title based on variant or use custom title
+  const sidebarTitle = title || variantStyles[variant]?.title || "Menu";
+
+  const renderCompactItem = (item, index) => {
+    const icon = getItemIcon(item);
+    const name = getItemName(item);
+    const hasHref = item.href && item.href !== "";
+
+    if (hasHref) {
+      return (
+        <CompactItemLink
+          key={item.name || item.label || index}
+          href={item.href}
+          data-label={name}
+          onClick={() => onSelect?.(name.toLowerCase())}
+        >
+          {icon}
+        </CompactItemLink>
+      );
+    }
+
+    return (
+      <CompactItemButton
+        key={item.name || item.label || index}
+        data-label={name}
+        onClick={() => onSelect?.(name.toLowerCase())}
+      >
+        {icon}
+      </CompactItemButton>
+    );
+  };
+
+  const renderExpandedItem = (item, index) => {
+    const icon = getItemIcon(item);
+    const name = getItemName(item);
+    const hasHref = item.href && item.href !== "";
+
+    if (hasHref) {
+      return (
+        <ExpandedItemLink
+          key={item.name || item.label || index}
+          href={item.href}
+          onClick={() => onSelect?.(name.toLowerCase())}
+        >
+          <ItemLeft>
+            {icon}
+            <span>{name}</span>
+          </ItemLeft>
+          <FaChevronRight size={14} style={{ opacity: 0.5, marginRight: '8px' }} />
+        </ExpandedItemLink>
+      );
+    }
+
+    return (
+      <ExpandedItemButton
+        key={item.name || item.label || index}
+        onClick={() => onSelect?.(name.toLowerCase())}
+      >
+        <ItemLeft>
+          {icon}
+          <span>{name}</span>
+        </ItemLeft>
+        <FaChevronRight size={14} style={{ opacity: 0.5, marginRight: '8px' }} />
+      </ExpandedItemButton>
+    );
+  };
+
+  const renderFloatingItem = (item, index) => {
+    const icon = getItemIcon(item);
+    const name = getItemName(item);
+    const hasHref = item.href && item.href !== "";
+
+    if (hasHref) {
+      return (
+        <FloatingItemLink
+          key={item.name || item.label || index}
+          href={item.href}
+          onClick={() => onSelect?.(name.toLowerCase())}
+        >
+          {icon}
+          <span>{name}</span>
+        </FloatingItemLink>
+      );
+    }
+
+    return (
+      <FloatingItemButton
+        key={item.name || item.label || index}
+        onClick={() => onSelect?.(name.toLowerCase())}
+      >
+        {icon}
+        <span>{name}</span>
+      </FloatingItemButton>
+    );
+  };
 
   switch (variant) {
     case "compact":
       return (
         <CompactSidebar>
-          <CompactTitle>{variantStyles.compact.title}</CompactTitle>
-          {items.map((item) => (
-            <CompactItem
-              key={item.name}
-              data-label={item.name}
-              onClick={() => onSelect?.(item.name.toLowerCase())}
-            >
-              {item.icon}
-            </CompactItem>
-          ))}
+          <CompactTitle>{sidebarTitle}</CompactTitle>
+          {menuItems.map((item, index) => renderCompactItem(item, index))}
         </CompactSidebar>
       );
 
     case "expanded":
       return (
         <ExpandedSidebar>
-          <ExpandedTitle>{variantStyles.expanded.title}</ExpandedTitle>
+          <ExpandedTitle>{sidebarTitle}</ExpandedTitle>
           <ExpandedSection>
             <SectionLabel>Components</SectionLabel>
-            {items.map((item) => (
-              <ExpandedItem
-                key={item.name}
-                onClick={() => onSelect?.(item.name.toLowerCase())}
-              >
-                <ItemLeft>
-                  {item.icon}
-                  <span>{item.name}</span>
-                </ItemLeft>
-                <FaChevronRight size={14} style={{ opacity: 0.5 }} />
-              </ExpandedItem>
-            ))}
+            {menuItems.map((item, index) => renderExpandedItem(item, index))}
           </ExpandedSection>
         </ExpandedSidebar>
       );
@@ -336,16 +575,8 @@ export default function SidebarVariant({ variant = "compact", onSelect }) {
     case "floating":
       return (
         <FloatingSidebar>
-          <FloatingTitle>{variantStyles.floating.title}</FloatingTitle>
-          {items.map((item) => (
-            <FloatingItem
-              key={item.name}
-              onClick={() => onSelect?.(item.name.toLowerCase())}
-            >
-              {item.icon}
-              <span>{item.name}</span>
-            </FloatingItem>
-          ))}
+          <FloatingTitle>{sidebarTitle}</FloatingTitle>
+          {menuItems.map((item, index) => renderFloatingItem(item, index))}
         </FloatingSidebar>
       );
 

@@ -807,7 +807,7 @@ export default function Page() {
         return (
           <GettingStartedSection>
             <IntroCard>
-              <h2>Styled-Lukman UI</h2>
+              <h2>Styled-Hairomin UI</h2>
               <p>
                 Mau bikin website tanpa ribet? Tinggal copy paste langsung jadi! Design System ini
                 ngasih kamu komponen UI siap pakai untuk website hotel/resort yang keren, modern, dan responsif..
@@ -822,11 +822,11 @@ export default function Page() {
                 <h3>Install Package</h3>
               </StepHeader>
               <StepContent>
-                <p>Mulai pakai Styled-Lukman cuma butuh 1 langkah. Jalankan perintah ini di terminal:</p>
+                <p>Mulai pakai Styled-Hairomin cuma butuh 1 langkah. Jalankan perintah ini di terminal:</p>
               </StepContent>
               <CodeSnippet
                 id="install-package"
-                code={`npm install styled-lukman`}
+                code={`npm install styled-hairomin`}
               />
             </StepCard>
 
@@ -885,12 +885,17 @@ export default function Page() {
                 id="header-modern"
                 code={`"use client";
 
-import { HeaderVariant } from "styled-lukman";
+import { HeaderVariant } from "styled-hairomin";
 
 export default function Page() {
   const headerData = {
     logo: "ResortHub",
-    links: ["Home", "Rooms", "Facilities", "Contact"],
+    links: [
+      { label: "Home", href: "#" },
+      { label: "Rooms", href: "#" },
+      { label: "Facilities", href: "#" },
+      { label: "Contact", href: "#" },
+    ],
   };
 
   return <HeaderVariant variant="modern" data={headerData} />;
@@ -906,12 +911,17 @@ export default function Page() {
                 id="header-minimal"
                 code={`"use client";
 
-import { HeaderVariant } from "styled-lukman";
+import { HeaderVariant } from "styled-hairomin";
 
 export default function Page() {
   const headerData = {
     logo: "RESORT",
-    links: ["Home", "Rooms", "About", "Contact"],
+    links: [
+      { label: "Home", href: "#" },
+      { label: "Rooms", href: "#" },
+      { label: "About", href: "#" },
+      { label: "Contact", href: "#" },
+    ],
     buttonText: "Book Now",
   };
 
@@ -930,12 +940,16 @@ export default function Page() {
                 id="header-glass"
                 code={`"use client";
 
-import { HeaderVariant } from "styled-lukman";
+import { HeaderVariant } from "styled-hairomin";
 
 export default function Page() {
   const headerData = {
     logo: "✦ Paradise Resort",
-    links: ["Home", "Explore", "Services"],
+    links: [
+      { label: "Home", href: "#" },
+      { label: "Explore", href: "#" },
+      { label: "Services", href: "#" },
+    ],
     searchPlaceholder: "Search...",
   };
 
@@ -970,7 +984,7 @@ export default function Page() {
                   id="card-elevated"
                   code={`"use client";
 
-import { CardVariant } from "styled-lukman";
+import { CardVariant } from "styled-hairomin";
 
 export default function Page() {
   const cardData = {
@@ -999,7 +1013,7 @@ export default function Page() {
                   id="card-bordered"
                   code={`"use client";
 
-import { CardVariant } from "styled-lukman";
+import { CardVariant } from "styled-hairomin";
 
 export default function Page() {
   const cardData = {
@@ -1009,11 +1023,17 @@ export default function Page() {
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
     price: "Rp 6.300.000",
     location: "Bali, Indonesia",
+    buttonText: "Pesan Sekarang",
+    buttonHref: "#",
+  };
+
+  const handleBooking = () => {
+    alert("Memproses pemesanan untuk Villa Taman...");
   };
 
   return (
     <div style={{ padding: 24 }}>
-      <CardVariant variant="bordered" data={cardData} />
+      <CardVariant variant="bordered" data={cardData} onButtonClick={handleBooking} />
     </div>
   );
 }
@@ -1028,7 +1048,7 @@ export default function Page() {
                   id="card-gradient"
                   code={`"use client";
 
-import { CardVariant } from "styled-lukman";
+import { CardVariant } from "styled-hairomin";
 
 export default function Page() {
   const cardData = {
@@ -1067,7 +1087,7 @@ export default function Page() {
                 code={`"use client";
 
 import { useState } from "react";
-import { ButtonVariant } from "styled-lukman";
+import { ButtonVariant } from "styled-hairomin";
 import { FaSpinner, FaCheck, FaArrowRight } from "react-icons/fa";
 
 export default function Page() {
@@ -1125,7 +1145,7 @@ export default function Page() {
                 code={`"use client";
 
 import { useState } from "react";
-import { ButtonVariant } from "styled-lukman";
+import { ButtonVariant } from "styled-hairomin";
 import { FaHeart, FaCheck } from "react-icons/fa";
 
 export default function Page() {
@@ -1155,7 +1175,7 @@ export default function Page() {
                 code={`"use client";
 
 import { useEffect, useState } from "react";
-import { ButtonVariant } from "styled-lukman";
+import { ButtonVariant } from "styled-hairomin";
 import { FaDownload, FaSpinner, FaCheck } from "react-icons/fa";
 
 export default function Page() {
@@ -1232,7 +1252,7 @@ export default function Page() {
                 id="footer-stacked"
                 code={`"use client";
 
-import { FooterVariant } from "styled-lukman";
+import { FooterVariant } from "styled-hairomin";
 
 export default function Page() {
   const footerData = {
@@ -1240,9 +1260,24 @@ export default function Page() {
     brandDesc:
       "Rasakan kemewahan dan kenyamanan di jantung surga. Liburan impian Anda menanti.",
     linkGroups: [
-      { title: "Tautan Cepat", links: ["Beranda", "Kamar", "Fasilitas", "Galeri"] },
-      { title: "Layanan", links: ["Spa & Wellness", "Restoran", "Bar Kolam", "Aktivitas"] },
-      { title: "Bantuan", links: ["Hubungi Kami", "FAQ", "Kebijakan Privasi", "Syarat & Ketentuan"] },
+      { title: "Tautan Cepat", links: [
+        { label: "Beranda", href: "#" },
+        { label: "Kamar", href: "#" },
+        { label: "Fasilitas", href: "#" },
+        { label: "Galeri", href: "#" },
+      ]},
+      { title: "Layanan", links: [
+        { label: "Spa & Wellness", href: "#" },
+        { label: "Restoran", href: "#" },
+        { label: "Bar Kolam", href: "#" },
+        { label: "Aktivitas", href: "#" },
+      ]},
+      { title: "Bantuan", links: [
+        { label: "Hubungi Kami", href: "#" },
+        { label: "FAQ", href: "#" },
+        { label: "Kebijakan Privasi", href: "#" },
+        { label: "Syarat & Ketentuan", href: "#" },
+      ]},
     ],
     copyright: "© 2025 Paradise Resort. Hak cipta dilindungi.",
   };
@@ -1264,7 +1299,7 @@ export default function Page() {
                 id="footer-columns"
                 code={`"use client";
 
-import { FooterVariant } from "styled-lukman";
+import { FooterVariant } from "styled-hairomin";
 
 export default function Page() {
   const footerData = {
@@ -1275,8 +1310,20 @@ export default function Page() {
     email: "info@paradiseresort.com",
     address: "Jl. Pantai No. 123, Pulau Tropis",
     columns: [
-      { title: "Jelajahi", links: ["Akomodasi", "Kuliner", "Acara", "Pernikahan", "Penawaran"] },
-      { title: "Kebijakan", links: ["Kebijakan Pemesanan", "Pembatalan", "Privasi", "Syarat & Ketentuan", "Peta Situs"] },
+      { title: "Jelajahi", links: [
+        { label: "Akomodasi", href: "#" },
+        { label: "Kuliner", href: "#" },
+        { label: "Acara", href: "#" },
+        { label: "Pernikahan", href: "#" },
+        { label: "Penawaran", href: "#" },
+      ]},
+      { title: "Kebijakan", links: [
+        { label: "Kebijakan Pemesanan", href: "#" },
+        { label: "Pembatalan", href: "#" },
+        { label: "Privasi", href: "#" },
+        { label: "Syarat & Ketentuan", href: "#" },
+        { label: "Peta Situs", href: "#" },
+      ]},
       { title: "Newsletter", desc: "Berlangganan untuk penawaran eksklusif dan info terbaru" },
     ],
   };
@@ -1298,14 +1345,21 @@ export default function Page() {
                 id="footer-centered"
                 code={`"use client";
 
-import { FooterVariant } from "styled-lukman";
+import { FooterVariant } from "styled-hairomin";
 
 export default function Page() {
   const footerData = {
     logo: "✦ PARADISE ✦",
     tagline:
       "Tempat kemewahan bertemu ketenangan. Temukan pelarian sempurna Anda di destinasi resort kelas dunia kami.",
-    links: ["Beranda", "Kamar", "Kuliner", "Spa", "Acara", "Kontak"],
+    links: [
+      { label: "Beranda", href: "#" },
+      { label: "Kamar", href: "#" },
+      { label: "Kuliner", href: "#" },
+      { label: "Spa", href: "#" },
+      { label: "Acara", href: "#" },
+      { label: "Kontak", href: "#" },
+    ],
     copyright:
       "© 2025 Paradise Resort. Hak cipta dilindungi. | Kebijakan Privasi | Syarat Penggunaan",
   };
@@ -1338,14 +1392,22 @@ export default function Page() {
                   code={`"use client";
 
 import { useState } from "react";
-import { SidebarVariant } from "styled-lukman";
+import { SidebarVariant } from "styled-hairomin";
 
 export default function Page() {
   const [active, setActive] = useState("header");
 
+  const menuItems = [
+    { name: "Header", href: "#" },
+    { name: "Card", href: "#" },
+    { name: "Button", href: "#" },
+    { name: "Footer", href: "#" },
+    { name: "Sidebar", href: "#" },
+  ];
+
   return (
     <div style={{ display: "flex", gap: 16 }}>
-      <SidebarVariant variant="compact" onSelect={setActive} />
+      <SidebarVariant variant="compact" items={menuItems} onSelect={setActive} />
       <main style={{ padding: 16 }}>
         <h2>Active: {active}</h2>
         <p>Isi section {active}…</p>
@@ -1366,14 +1428,22 @@ export default function Page() {
                   code={`"use client";
 
 import { useState } from "react";
-import { SidebarVariant } from "styled-lukman";
+import { SidebarVariant } from "styled-hairomin";
 
 export default function Page() {
   const [active, setActive] = useState("header");
 
+  const menuItems = [
+    { name: "Header", href: "#" },
+    { name: "Card", href: "#" },
+    { name: "Button", href: "#" },
+    { name: "Footer", href: "#" },
+    { name: "Sidebar", href: "#" },
+  ];
+
   return (
     <div style={{ display: "flex", gap: 16 }}>
-      <SidebarVariant variant="expanded" onSelect={setActive} />
+      <SidebarVariant variant="expanded" items={menuItems} onSelect={setActive} />
       <main style={{ padding: 16 }}>
         <h2>Active: {active}</h2>
         <p>Isi section {active}…</p>
@@ -1394,14 +1464,22 @@ export default function Page() {
                   code={`"use client";
 
 import { useState } from "react";
-import { SidebarVariant } from "styled-lukman";
+import { SidebarVariant } from "styled-hairomin";
 
 export default function Page() {
   const [active, setActive] = useState("header");
 
+  const menuItems = [
+    { name: "Header", href: "#" },
+    { name: "Card", href: "#" },
+    { name: "Button", href: "#" },
+    { name: "Footer", href: "#" },
+    { name: "Sidebar", href: "#" },
+  ];
+
   return (
     <div style={{ display: "flex", gap: 16 }}>
-      <SidebarVariant variant="floating" onSelect={setActive} />
+      <SidebarVariant variant="floating" items={menuItems} onSelect={setActive} />
       <main style={{ padding: 16 }}>
         <h2>Active: {active}</h2>
         <p>Isi section {active}…</p>
@@ -1423,7 +1501,7 @@ export default function Page() {
 
   return (
     <>
-      <MainHeader>✦ Styled-Lukman UI ✦</MainHeader>
+      <MainHeader>✦ Styled-Hairomin UI ✦</MainHeader>
       <Container>
         <MobileMenuButton onClick={toggleSidebar}>
           <FaBars size={24} />
@@ -1462,7 +1540,7 @@ export default function Page() {
           {renderContent()}
         </MainContent>
       </Container>
-      <MainFooter>2026 Styled-Lukman Design System — Build faster. Look better. Made with by Lukman Hairomin</MainFooter>
+      <MainFooter>2026 Styled-Hairomin Design System — Build faster. Look better. Made with by Lukman Hairomin</MainFooter>
     </>
   );
 }

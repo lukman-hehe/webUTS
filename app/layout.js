@@ -1,7 +1,7 @@
 import "./globals.css"
 
 export const metadata = {
-  title: "Styled-Lukman UI",
+  title: "yourman UI",
 }
 
 export default function RootLayout({ children }) {

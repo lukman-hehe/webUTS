@@ -406,6 +406,14 @@ const CenteredCopyright = styled.div`
   opacity: 0.6;
 `;
 
+// Helper function to normalize links (support both string and { label, href } format)
+const normalizeLink = (link) => {
+  if (typeof link === 'string') {
+    return { label: link, href: '#' };
+  }
+  return { label: link.label, href: link.href || '#' };
+};
+
 export default function FooterVariant({ variant = "stacked", data }) {
   const defaultData = {
     stacked: {
@@ -462,9 +470,10 @@ export default function FooterVariant({ variant = "stacked", data }) {
               {footerData.linkGroups.map((group, idx) => (
                 <LinkGroup key={idx}>
                   <h4>{group.title}</h4>
-                  {group.links.map((link, linkIdx) => (
-                    <a key={linkIdx} href="#">{link}</a>
-                  ))}
+                  {group.links.map((link, linkIdx) => {
+                    const { label, href } = normalizeLink(link);
+                    return <a key={linkIdx} href={href}>{label}</a>;
+                  })}
                 </LinkGroup>
               ))}
             </StackedLinks>
@@ -504,9 +513,10 @@ export default function FooterVariant({ variant = "stacked", data }) {
             {footerData.columns.map((col, idx) => (
               <ColumnBox key={idx}>
                 <h3>{col.title}</h3>
-                {col.links && col.links.map((link, linkIdx) => (
-                  <a key={linkIdx} href="#">{link}</a>
-                ))}
+                {col.links && col.links.map((link, linkIdx) => {
+                  const { label, href } = normalizeLink(link);
+                  return <a key={linkIdx} href={href}>{label}</a>;
+                })}
                 {col.desc && <p>{col.desc}</p>}
                 {idx === footerData.columns.length - 1 && (
                   <SocialIcons style={{ justifyContent: 'flex-start', marginTop: '1.5rem' }}>
@@ -532,9 +542,10 @@ export default function FooterVariant({ variant = "stacked", data }) {
             <CenteredLogo>{footerData.logo}</CenteredLogo>
             <CenteredTagline>{footerData.tagline}</CenteredTagline>
             <CenteredNav>
-              {footerData.links.map((link, idx) => (
-                <a key={idx} href="#">{link}</a>
-              ))}
+              {footerData.links.map((link, idx) => {
+                const { label, href } = normalizeLink(link);
+                return <a key={idx} href={href}>{label}</a>;
+              })}
             </CenteredNav>
             <CenteredSocial>
               <a href="#"><FaFacebookF /></a>
