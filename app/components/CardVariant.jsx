@@ -18,7 +18,6 @@ const variantStyles = {
   },
 };
 
-/* ====== VARIANT ELEVATED: Card dengan bayangan dan lencana ====== */
 const ElevatedCard = styled.div`
   width: 100%;
   max-width: 350px;

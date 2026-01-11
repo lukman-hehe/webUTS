@@ -31,7 +31,6 @@ const variantStyles = {
   },
 };
 
-/* ====== VARIANT COMPACT: Icon-only sidebar with tooltip ====== */
 const CompactSidebar = styled.aside`
   font-family: "Inter", sans-serif;
   background: ${variantStyles.compact.background};
@@ -126,7 +125,6 @@ const CompactItem = styled.button`
   }
 `;
 
-/* ====== VARIANT EXPANDED: Full sidebar with sections ====== */
 const ExpandedSidebar = styled.aside`
   font-family: "Poppins", sans-serif;
   background: ${variantStyles.expanded.background};
@@ -221,7 +219,6 @@ const ItemLeft = styled.div`
   }
 `;
 
-/* ====== VARIANT FLOATING: Card-style sidebar ====== */
 const FloatingSidebar = styled.aside`
   font-family: "Poppins", sans-serif;
   background: ${variantStyles.floating.background};

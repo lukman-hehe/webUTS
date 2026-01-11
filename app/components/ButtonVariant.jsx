@@ -22,7 +22,6 @@ const variantStyles = {
   },
 };
 
-/* ====== VARIANT SOLID: Tombol solid dengan ikon ====== */
 const SolidButton = styled.button`
   display: inline-flex;
   align-items: center;

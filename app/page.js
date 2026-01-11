@@ -26,7 +26,6 @@ import ButtonVariant from "./components/ButtonVariant";
 import FooterVariant from "./components/FooterVariant";
 import SidebarVariant from "./components/SidebarVariant";
 
-// HEADER UTAMA (bukan komponen variant)
 const MainHeader = styled.header`
   width: 100%;
   background: #002244;
@@ -46,21 +45,20 @@ const MainHeader = styled.header`
   }
 `;
 
-// FOOTER UTAMA (bukan komponen variant)
 const MainFooter = styled.footer`
   width: 100%;
   background: #002244;
   color: white;
   text-align: center;
   padding: 1rem 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   border-radius: 8px;
   margin-top: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.75rem;
     padding: 0.8rem 0;
     margin-top: 1.5rem;
   }
@@ -75,7 +73,6 @@ const Container = styled.div`
   overflow-x: hidden;
 `;
 
-// Overlay untuk mobile saat sidebar terbuka
 const MobileOverlay = styled.div`
   display: none;
   position: fixed;
@@ -91,7 +88,6 @@ const MobileOverlay = styled.div`
   }
 `;
 
-// Tombol Burger Menu untuk Mobile
 const MobileMenuButton = styled.button`
   display: none;
   position: fixed;
@@ -113,7 +109,6 @@ const MobileMenuButton = styled.button`
   }
 `;
 
-// Sidebar Navigation
 const Sidebar = styled.aside`
   position: fixed;
   top: 0;
@@ -205,7 +200,6 @@ const MenuItem = styled.button`
   }
 `;
 
-// Main Content Area
 const MainContent = styled.main`
   flex: 1;
   margin-left: 280px;
@@ -215,7 +209,7 @@ const MainContent = styled.main`
   @media (max-width: 768px) {
     margin-left: 0;
     padding: 1.5rem;
-    padding-top: 5rem; // Spacer untuk tombol menu
+    padding-top: 5rem;
   }
 `;
 
@@ -418,7 +412,6 @@ const SidebarPreview = styled.div`
   }
 `;
 
-// Styled Components untuk Getting Started Section
 const GettingStartedSection = styled.div`
   background: var(--background);
   border-radius: 16px;
@@ -554,7 +547,7 @@ const ComponentListGrid = styled.div`
 `;
 
 const ComponentItem = styled.div`
-  background: white;
+  background: var(--card-bg);
   border: 1px solid var(--blue-alpha-200);
   border-radius: 8px;
   padding: 1rem;
@@ -597,12 +590,10 @@ const ComponentItem = styled.div`
 export default function Page() {
   const [activeMenu, setActiveMenu] = useState("getting-started");
   const [copiedStates, setCopiedStates] = useState({});
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State untuk mobile sidebar
-  const [isDarkMode, setIsDarkMode] = useState(false); // State untuk dark mode
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Effect untuk mengatur tema
   useEffect(() => {
-    // Cek preferensi tema dari localStorage
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark');
@@ -617,31 +608,24 @@ export default function Page() {
     localStorage.setItem('theme', newTheme);
   };
 
-  // --- STATE UNTUK BUTTON DYNAMIC ---
-
-  // 1. Solid Button (Loading State)
-  const [loadingState, setLoadingState] = useState("idle"); // idle, loading, success
+  const [loadingState, setLoadingState] = useState("idle");
 
   const handleSolidClick = () => {
     if (loadingState === "loading") return;
     setLoadingState("loading");
 
-    // Simulasi proses async
     setTimeout(() => {
       setLoadingState("success");
-      // Reset ke idle setelah beberapa saat (opsional)
       setTimeout(() => setLoadingState("idle"), 2000);
     }, 2000);
   };
 
-  // 2. Outline Button (Toggle Favorite)
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleOutlineClick = () => {
     setIsFavorite(!isFavorite);
   };
 
-  // 3. Pill Button (Download Progress)
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -765,7 +749,7 @@ export default function Page() {
   };
 
   const menuItems = [
-    { id: "getting-started", label: "Getting Started", icon: <FaRocket /> },
+    { id: "getting-started", label: "Cara Pakai", icon: <FaRocket /> },
     { id: "button", label: "Button", icon: <FaArrowRight /> },
     { id: "card", label: "Card", icon: <FaBed /> },
     { id: "header", label: "Header", icon: <FaHome /> },
@@ -811,8 +795,7 @@ export default function Page() {
             )}
           </CopyButton>
           <CodeContent>
-            <code dangerouslySetInnerHTML={{ __html: code }} />
-          </CodeContent>
+            <code>{code}</code></CodeContent>
         </CodeBlock>
       </CodeSection>
     );
@@ -824,15 +807,14 @@ export default function Page() {
         return (
           <GettingStartedSection>
             <IntroCard>
-              <h2>🎨 Selamat Datang di Design System</h2>
+              <h2>Styled-Lukman UI</h2>
               <p>
-                Design System ini menyediakan berbagai komponen UI yang siap pakai untuk membangun
-                website hotel/resort yang modern dan responsif. Ikuti panduan di bawah ini untuk
-                memulai menggunakan komponen-komponen yang tersedia.
+                Mau bikin website tanpa ribet? Tinggal copy paste langsung jadi! Design System ini
+                ngasih kamu komponen UI siap pakai untuk website hotel/resort yang keren, modern, dan responsif..
               </p>
             </IntroCard>
 
-            <SectionTitle>📦 Cara Instalasi</SectionTitle>
+            <SectionTitle>📦Cara Instalasi</SectionTitle>
 
             <StepCard>
               <StepHeader>
@@ -840,7 +822,7 @@ export default function Page() {
                 <h3>Install Package</h3>
               </StepHeader>
               <StepContent>
-                <p>Install design system ini dengan menjalankan perintah berikut di terminal:</p>
+                <p>Mulai pakai Styled-Lukman cuma butuh 1 langkah. Jalankan perintah ini di terminal:</p>
               </StepContent>
               <CodeSnippet
                 id="install-package"
@@ -901,14 +883,19 @@ export default function Page() {
               <HeaderVariant variant="modern" data={headerData.modern} />
               <CodeSnippet
                 id="header-modern"
-                code={`<span class="keyword">import</span> HeaderVariant <span class="keyword">from</span> <span class="string">"./components/HeaderVariant"</span>;
+                code={`"use client";
 
-<span class="keyword">const</span> headerData = {
-  logo: <span class="string">"ResortHub"</span>,
-  links: [<span class="string">"Home"</span>, <span class="string">"Rooms"</span>, <span class="string">"Facilities"</span>, <span class="string">"Contact"</span>]
-};
+import { HeaderVariant } from "styled-lukman";
 
-<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"modern"</span> <span class="attr">data</span>={headerData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const headerData = {
+    logo: "ResortHub",
+    links: ["Home", "Rooms", "Facilities", "Contact"],
+  };
+
+  return <HeaderVariant variant="modern" data={headerData} />;
+}
+`}
               />
             </VariantCard>
 
@@ -917,15 +904,20 @@ export default function Page() {
               <HeaderVariant variant="minimal" data={headerData.minimal} />
               <CodeSnippet
                 id="header-minimal"
-                code={`<span class="keyword">import</span> HeaderVariant <span class="keyword">from</span> <span class="string">"./components/HeaderVariant"</span>;
+                code={`"use client";
 
-<span class="keyword">const</span> headerData = {
-  logo: <span class="string">"RESORT"</span>,
-  links: [<span class="string">"Home"</span>, <span class="string">"Rooms"</span>, <span class="string">"About"</span>, <span class="string">"Contact"</span>],
-  buttonText: <span class="string">"Book Now"</span>
-};
+import { HeaderVariant } from "styled-lukman";
 
-<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"minimal"</span> <span class="attr">data</span>={headerData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const headerData = {
+    logo: "RESORT",
+    links: ["Home", "Rooms", "About", "Contact"],
+    buttonText: "Book Now",
+  };
+
+  return <HeaderVariant variant="minimal" data={headerData} />;
+}
+`}
               />
             </VariantCard>
 
@@ -936,15 +928,30 @@ export default function Page() {
               </div>
               <CodeSnippet
                 id="header-glass"
-                code={`<span class="keyword">import</span> HeaderVariant <span class="keyword">from</span> <span class="string">"./components/HeaderVariant"</span>;
+                code={`"use client";
 
-<span class="keyword">const</span> headerData = {
-  logo: <span class="string">"✦ Paradise Resort"</span>,
-  links: [<span class="string">"Home"</span>, <span class="string">"Explore"</span>, <span class="string">"Services"</span>],
-  searchPlaceholder: <span class="string">"Search..."</span>
-};
+import { HeaderVariant } from "styled-lukman";
 
-<span class="tag">&lt;HeaderVariant</span> <span class="attr">variant</span>=<span class="string">"glassmorphism"</span> <span class="attr">data</span>={headerData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const headerData = {
+    logo: "✦ Paradise Resort",
+    links: ["Home", "Explore", "Services"],
+    searchPlaceholder: "Search...",
+  };
+
+  return (
+    <div
+      style={{
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        padding: "2rem",
+        borderRadius: "12px",
+      }}
+    >
+      <HeaderVariant variant="glassmorphism" data={headerData} />
+    </div>
+  );
+}
+`}
               />
             </VariantCard>
           </VariantSection>
@@ -961,18 +968,27 @@ export default function Page() {
                 <CardVariant variant="elevated" data={cardData.elevated} />
                 <CodeSnippet
                   id="card-elevated"
-                  code={`<span class="keyword">import</span> CardVariant <span class="keyword">from</span> <span class="string">"./components/CardVariant"</span>;
+                  code={`"use client";
 
-<span class="keyword">const</span> cardData = {
-  title: <span class="string">"Pemandangan Laut"</span>,
-  description: <span class="string">"Panorama laut yang menakjubkan"</span>,
-  image: <span class="string">"https://example.com/image.jpg"</span>,
-  price: <span class="string">"Rp 5.250.000"</span>,
-  rating: <span class="string">"4.9"</span>,
-  badge: <span class="string">"PREMIUM"</span>
-};
+import { CardVariant } from "styled-lukman";
 
-<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"elevated"</span> <span class="attr">data</span>={cardData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const cardData = {
+    title: "Pemandangan Tanaman Hijau",
+    description: "Panorama Tanaman Hijau yang menakjubkan dengan fasilitas mewah",
+    image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80",
+    price: "Rp 5.250.000",
+    rating: "4.9",
+    badge: "PREMIUM",
+  };
+
+  return (
+    <div style={{ padding: 24 }}>
+      <CardVariant variant="elevated" data={cardData} />
+    </div>
+  );
+}
+`}
                 />
               </div>
 
@@ -981,17 +997,27 @@ export default function Page() {
                 <CardVariant variant="bordered" data={cardData.bordered} />
                 <CodeSnippet
                   id="card-bordered"
-                  code={`<span class="keyword">import</span> CardVariant <span class="keyword">from</span> <span class="string">"./components/CardVariant"</span>;
+                  code={`"use client";
 
-<span class="keyword">const</span> cardData = {
-  title: <span class="string">"Villa Taman"</span>,
-  description: <span class="string">"Villa yang tenang dikelilingi taman tropis"</span>,
-  image: <span class="string">"https://example.com/image.jpg"</span>,
-  price: <span class="string">"Rp 6.300.000"</span>,
-  location: <span class="string">"Bali, Indonesia"</span>
-};
+import { CardVariant } from "styled-lukman";
 
-<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"bordered"</span> <span class="attr">data</span>={cardData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const cardData = {
+    title: "Villa Taman",
+    description:
+      "Villa yang tenang dikelilingi taman tropis dengan teras pribadi dan akses kolam renang.",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+    price: "Rp 6.300.000",
+    location: "Bali, Indonesia",
+  };
+
+  return (
+    <div style={{ padding: 24 }}>
+      <CardVariant variant="bordered" data={cardData} />
+    </div>
+  );
+}
+`}
                 />
               </div>
 
@@ -1000,17 +1026,27 @@ export default function Page() {
                 <CardVariant variant="gradient" data={cardData.gradient} />
                 <CodeSnippet
                   id="card-gradient"
-                  code={`<span class="keyword">import</span> CardVariant <span class="keyword">from</span> <span class="string">"./components/CardVariant"</span>;
+                  code={`"use client";
 
-<span class="keyword">const</span> cardData = {
-  title: <span class="string">"Surga Senja"</span>,
-  description: <span class="string">"Pemandangan matahari terbenam yang memukau"</span>,
-  image: <span class="string">"https://example.com/image.jpg"</span>,
-  price: <span class="string">"Rp 4.200.000"</span>,
-  rating: <span class="string">"4.8"</span>
-};
+import { CardVariant } from "styled-lukman";
 
-<span class="tag">&lt;CardVariant</span> <span class="attr">variant</span>=<span class="string">"gradient"</span> <span class="attr">data</span>={cardData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const cardData = {
+    title: "Surga Senja",
+    description:
+      "Saksikan pemandangan matahari terbenam yang memukau dari balkon pribadi Anda",
+    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80",
+    price: "Rp 4.200.000",
+    rating: "4.8",
+  };
+
+  return (
+    <div style={{ padding: 24 }}>
+      <CardVariant variant="gradient" data={cardData} />
+    </div>
+  );
+}
+`}
                 />
               </div>
             </VariantGrid>
@@ -1028,25 +1064,57 @@ export default function Page() {
               <ButtonVariant variant="solid" data={buttonData.solid} onClick={handleSolidClick} />
               <CodeSnippet
                 id="button-solid"
-                code={`<span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">"react"</span>;
-<span class="keyword">import</span> ButtonVariant <span class="keyword">from</span> <span class="string">"./components/ButtonVariant"</span>;
-<span class="keyword">import</span> { FaArrowRight, FaSpinner, FaCheck } <span class="keyword">from</span> <span class="string">"react-icons/fa"</span>;
+                code={`"use client";
 
-<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
-  <span class="keyword">const</span> [status, setStatus] = useState(<span class="string">"idle"</span>);
+import { useState } from "react";
+import { ButtonVariant } from "styled-lukman";
+import { FaSpinner, FaCheck, FaArrowRight } from "react-icons/fa";
 
-  <span class="keyword">const</span> handleClick = () => {
-    setStatus(<span class="string">"loading"</span>);
-    setTimeout(() => setStatus(<span class="string">"success"</span>), 2000);
+export default function Page() {
+  const [status, setStatus] = useState("idle"); // idle | loading | success
+
+  const handleClick = async () => {
+    setStatus("loading");
+    await new Promise((r) => setTimeout(r, 1200));
+    setStatus("success");
+    setTimeout(() => setStatus("idle"), 1500);
   };
 
-  <span class="keyword">const</span> buttonData = {
-    label: status === <span class="string">"loading"</span> ? <span class="string">"Memproses..."</span> : status === <span class="string">"success"</span> ? <span class="string">"Berhasil!"</span> : <span class="string">"Konfirmasi Pemesanan"</span>,
-    icon: status === <span class="string">"loading"</span> ? <FaSpinner /> : status === <span class="string">"success"</span> ? <FaCheck /> : <FaArrowRight />
+  const buttonData = {
+    label:
+      status === "loading"
+        ? "Memproses..."
+        : status === "success"
+        ? "Berhasil!"
+        : "Konfirmasi Pemesanan",
+    icon:
+      status === "loading" ? (
+        <FaSpinner className="spin" />
+      ) : status === "success" ? (
+        <FaCheck />
+      ) : (
+        <FaArrowRight />
+      ),
   };
 
-  <span class="keyword">return</span> <span class="tag">&lt;ButtonVariant</span> <span class="attr">variant</span>=<span class="string">"solid"</span> <span class="attr">data</span>={buttonData} <span class="attr">onClick</span>={handleClick} <span class="tag">/&gt;</span>;
-}`}
+  return (
+    <>
+      <style jsx global>{\`
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .spin {
+          animation: spin 1s linear infinite;
+        }
+      \`}</style>
+
+      <ButtonVariant variant="solid" data={buttonData} onClick={handleClick} />
+    </>
+  );
+}
+`}
               />
             </VariantCard>
             <VariantCard>
@@ -1054,26 +1122,29 @@ export default function Page() {
               <ButtonVariant variant="outline" data={buttonData.outline} onClick={handleOutlineClick} />
               <CodeSnippet
                 id="button-outline"
-                code={`<span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">"react"</span>;
-<span class="keyword">import</span> ButtonVariant <span class="keyword">from</span> <span class="string">"./components/ButtonVariant"</span>;
-<span class="keyword">import</span> { FaHeart, FaCheck } <span class="keyword">from</span> <span class="string">"react-icons/fa"</span>;
+                code={`"use client";
 
-<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
-  <span class="keyword">const</span> [isFavorite, setIsFavorite] = useState(<span class="keyword">false</span>);
+import { useState } from "react";
+import { ButtonVariant } from "styled-lukman";
+import { FaHeart, FaCheck } from "react-icons/fa";
 
-  <span class="keyword">const</span> buttonData = {
-    label: isFavorite ? <span class="string">"Tersimpan di Favorit"</span> : <span class="string">"Tambah ke Favorit"</span>,
-    icon: isFavorite ? <FaHeart color=<span class="string">"red"</span> /> : <FaCheck />
+export default function Page() {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const buttonData = {
+    label: isFavorite ? "Tersimpan di Favorit" : "Tambah ke Favorit",
+    icon: isFavorite ? <FaHeart color="red" /> : <FaCheck />,
   };
 
-  <span class="keyword">return</span> (
-    <span class="tag">&lt;ButtonVariant</span>
-      <span class="attr">variant</span>=<span class="string">"outline"</span>
-      <span class="attr">data</span>={buttonData}
-      <span class="attr">onClick</span>={() => setIsFavorite(!isFavorite)}
-    <span class="tag">/&gt;</span>
+  return (
+    <ButtonVariant
+      variant="outline"
+      data={buttonData}
+      onClick={() => setIsFavorite(!isFavorite)}
+    />
   );
-}`}
+}
+`}
               />
             </VariantCard>
             <VariantCard>
@@ -1081,37 +1152,70 @@ export default function Page() {
               <ButtonVariant variant="pill" data={buttonData.pill} onClick={handlePillClick} />
               <CodeSnippet
                 id="button-pill"
-                code={`<span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">"react"</span>;
-<span class="keyword">import</span> ButtonVariant <span class="keyword">from</span> <span class="string">"./components/ButtonVariant"</span>;
-<span class="keyword">import</span> { FaDownload, FaSpinner, FaCheck } <span class="keyword">from</span> <span class="string">"react-icons/fa"</span>;
+                code={`"use client";
 
-<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
-  <span class="keyword">const</span> [progress, setProgress] = useState(0);
-  <span class="keyword">const</span> [isDownloading, setIsDownloading] = useState(<span class="keyword">false</span>);
+import { useEffect, useState } from "react";
+import { ButtonVariant } from "styled-lukman";
+import { FaDownload, FaSpinner, FaCheck } from "react-icons/fa";
 
-  <span class="keyword">const</span> startDownload = () => {
-    <span class="keyword">if</span> (isDownloading) <span class="keyword">return</span>;
-    setIsDownloading(<span class="keyword">true</span>);
-    setProgress(0);
-    <span class="keyword">const</span> interval = setInterval(() => {
-      setProgress(prev => {
-        <span class="keyword">if</span> (prev >= 100) {
-          clearInterval(interval);
-          setIsDownloading(<span class="keyword">false</span>);
-          <span class="keyword">return</span> 100;
-        }
-        <span class="keyword">return</span> prev + 10;
-      });
+export default function Page() {
+  const [progress, setProgress] = useState(0);
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  useEffect(() => {
+    if (!isDownloading) return;
+
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev >= 100 ? 100 : prev + 10));
     }, 200);
+
+    return () => clearInterval(interval);
+  }, [isDownloading]);
+
+  useEffect(() => {
+    if (progress >= 100) setIsDownloading(false);
+  }, [progress]);
+
+  const startDownload = () => {
+    if (isDownloading) return;
+    setProgress(0);
+    setIsDownloading(true);
   };
 
-  <span class="keyword">const</span> buttonData = {
-    label: isDownloading ? \`Downloading \${progress}%\` : progress === 100 ? <span class="string">"Selesai!"</span> : <span class="string">"Download"</span>,
-    icon: isDownloading ? <FaSpinner /> : progress === 100 ? <FaCheck /> : <FaDownload />
+  const buttonData = {
+    label: isDownloading
+      ? \`Downloading \${progress}%\`
+      : progress >= 100
+      ? "Selesai!"
+      : "Download",
+    icon:
+      isDownloading ? (
+        <FaSpinner className="spin" />
+      ) : progress >= 100 ? (
+        <FaCheck />
+      ) : (
+        <FaDownload />
+      ),
   };
 
-  <span class="keyword">return</span> <span class="tag">&lt;ButtonVariant</span> <span class="attr">variant</span>=<span class="string">"pill"</span> <span class="attr">data</span>={buttonData} <span class="attr">onClick</span>={startDownload} <span class="tag">/&gt;</span>;
-}`}
+  return (
+    <>
+      <style jsx global>{\`
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .spin {
+          animation: spin 1s linear infinite;
+        }
+      \`}</style>
+
+      <ButtonVariant variant="pill" data={buttonData} onClick={startDownload} />
+    </>
+  );
+}
+`}
               />
             </VariantCard>
           </VariantSection>
@@ -1126,29 +1230,31 @@ export default function Page() {
               <FooterVariant variant="stacked" data={footerData.stacked} />
               <CodeSnippet
                 id="footer-stacked"
-                code={`<span class="keyword">import</span> FooterVariant <span class="keyword">from</span> <span class="string">"./components/FooterVariant"</span>;
+                code={`"use client";
 
-<span class="keyword">const</span> footerData = {
-  brandName: <span class="string">"Paradise Resort"</span>,
-  brandDesc: <span class="string">"Rasakan kemewahan dan kenyamanan di jantung surga."</span>,
-  linkGroups: [
-    {
-      title: <span class="string">"Tautan Cepat"</span>,
-      links: [<span class="string">"Beranda"</span>, <span class="string">"Kamar"</span>, <span class="string">"Fasilitas"</span>, <span class="string">"Galeri"</span>]
-    },
-    {
-      title: <span class="string">"Layanan"</span>,
-      links: [<span class="string">"Spa & Wellness"</span>, <span class="string">"Restoran"</span>, <span class="string">"Bar Kolam"</span>]
-    },
-    {
-      title: <span class="string">"Bantuan"</span>,
-      links: [<span class="string">"Hubungi Kami"</span>, <span class="string">"FAQ"</span>, <span class="string">"Kebijakan Privasi"</span>]
-    }
-  ],
-  copyright: <span class="string">"© 2025 Paradise Resort. Hak cipta dilindungi."</span>
-};
+import { FooterVariant } from "styled-lukman";
 
-<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"stacked"</span> <span class="attr">data</span>={footerData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const footerData = {
+    brandName: "Paradise Resort",
+    brandDesc:
+      "Rasakan kemewahan dan kenyamanan di jantung surga. Liburan impian Anda menanti.",
+    linkGroups: [
+      { title: "Tautan Cepat", links: ["Beranda", "Kamar", "Fasilitas", "Galeri"] },
+      { title: "Layanan", links: ["Spa & Wellness", "Restoran", "Bar Kolam", "Aktivitas"] },
+      { title: "Bantuan", links: ["Hubungi Kami", "FAQ", "Kebijakan Privasi", "Syarat & Ketentuan"] },
+    ],
+    copyright: "© 2025 Paradise Resort. Hak cipta dilindungi.",
+  };
+
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      <div style={{ padding: 24 }}>Konten…</div>
+      <FooterVariant variant="stacked" data={footerData} />
+    </div>
+  );
+}
+`}
               />
             </VariantCard>
             <VariantCard>
@@ -1156,22 +1262,33 @@ export default function Page() {
               <FooterVariant variant="columns" data={footerData.columns} />
               <CodeSnippet
                 id="footer-columns"
-                code={`<span class="keyword">import</span> FooterVariant <span class="keyword">from</span> <span class="string">"./components/FooterVariant"</span>;
+                code={`"use client";
 
-<span class="keyword">const</span> footerData = {
-  aboutTitle: <span class="string">"Tentang Resort"</span>,
-  aboutDesc: <span class="string">"Resort tepi pantai premium dengan fasilitas kelas dunia."</span>,
-  phone: <span class="string">"+62 (555) 123-4567"</span>,
-  email: <span class="string">"info@paradiseresort.com"</span>,
-  address: <span class="string">"Jl. Pantai No. 123, Pulau Tropis"</span>,
-  columns: [
-    { title: <span class="string">"Jelajahi"</span>, links: [<span class="string">"Akomodasi"</span>, <span class="string">"Kuliner"</span>, <span class="string">"Acara"</span>] },
-    { title: <span class="string">"Kebijakan"</span>, links: [<span class="string">"Pemesanan"</span>, <span class="string">"Pembatalan"</span>, <span class="string">"Privasi"</span>] },
-    { title: <span class="string">"Newsletter"</span>, desc: <span class="string">"Berlangganan untuk penawaran eksklusif"</span> }
-  ]
-};
+import { FooterVariant } from "styled-lukman";
 
-<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"columns"</span> <span class="attr">data</span>={footerData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const footerData = {
+    aboutTitle: "Tentang Resort",
+    aboutDesc:
+      "Resort tepi pantai premium yang menawarkan fasilitas kelas dunia, layanan luar biasa, dan pengalaman tak terlupakan untuk semua tamu.",
+    phone: "+62 (555) 123-4567",
+    email: "info@paradiseresort.com",
+    address: "Jl. Pantai No. 123, Pulau Tropis",
+    columns: [
+      { title: "Jelajahi", links: ["Akomodasi", "Kuliner", "Acara", "Pernikahan", "Penawaran"] },
+      { title: "Kebijakan", links: ["Kebijakan Pemesanan", "Pembatalan", "Privasi", "Syarat & Ketentuan", "Peta Situs"] },
+      { title: "Newsletter", desc: "Berlangganan untuk penawaran eksklusif dan info terbaru" },
+    ],
+  };
+
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      <div style={{ padding: 24 }}>Konten…</div>
+      <FooterVariant variant="columns" data={footerData} />
+    </div>
+  );
+}
+`}
               />
             </VariantCard>
             <VariantCard>
@@ -1179,16 +1296,28 @@ export default function Page() {
               <FooterVariant variant="centered" data={footerData.centered} />
               <CodeSnippet
                 id="footer-centered"
-                code={`<span class="keyword">import</span> FooterVariant <span class="keyword">from</span> <span class="string">"./components/FooterVariant"</span>;
+                code={`"use client";
 
-<span class="keyword">const</span> footerData = {
-  logo: <span class="string">"✦ PARADISE ✦"</span>,
-  tagline: <span class="string">"Tempat kemewahan bertemu ketenangan."</span>,
-  links: [<span class="string">"Beranda"</span>, <span class="string">"Kamar"</span>, <span class="string">"Kuliner"</span>, <span class="string">"Spa"</span>, <span class="string">"Acara"</span>, <span class="string">"Kontak"</span>],
-  copyright: <span class="string">"© 2025 Paradise Resort. Hak cipta dilindungi."</span>
-};
+import { FooterVariant } from "styled-lukman";
 
-<span class="tag">&lt;FooterVariant</span> <span class="attr">variant</span>=<span class="string">"centered"</span> <span class="attr">data</span>={footerData} <span class="tag">/&gt;</span>`}
+export default function Page() {
+  const footerData = {
+    logo: "✦ PARADISE ✦",
+    tagline:
+      "Tempat kemewahan bertemu ketenangan. Temukan pelarian sempurna Anda di destinasi resort kelas dunia kami.",
+    links: ["Beranda", "Kamar", "Kuliner", "Spa", "Acara", "Kontak"],
+    copyright:
+      "© 2025 Paradise Resort. Hak cipta dilindungi. | Kebijakan Privasi | Syarat Penggunaan",
+  };
+
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      <div style={{ padding: 24 }}>Konten…</div>
+      <FooterVariant variant="centered" data={footerData} />
+    </div>
+  );
+}
+`}
               />
             </VariantCard>
           </VariantSection>
@@ -1206,16 +1335,25 @@ export default function Page() {
                 </SidebarPreview>
                 <CodeSnippet
                   id="sidebar-compact"
-                  code={`<span class="keyword">import</span> SidebarVariant <span class="keyword">from</span> <span class="string">"./components/SidebarVariant"</span>;
+                  code={`"use client";
 
-<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
-  <span class="keyword">const</span> handleSelect = (item) => {
-    console.log(<span class="string">"Selected:"</span>, item);
-    <span class="comment">// Handle navigation or state change</span>
-  };
+import { useState } from "react";
+import { SidebarVariant } from "styled-lukman";
 
-  <span class="keyword">return</span> <span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"compact"</span> <span class="attr">onSelect</span>={handleSelect} <span class="tag">/&gt;</span>;
-}`}
+export default function Page() {
+  const [active, setActive] = useState("header");
+
+  return (
+    <div style={{ display: "flex", gap: 16 }}>
+      <SidebarVariant variant="compact" onSelect={setActive} />
+      <main style={{ padding: 16 }}>
+        <h2>Active: {active}</h2>
+        <p>Isi section {active}…</p>
+      </main>
+    </div>
+  );
+}
+`}
                 />
               </div>
               <div>
@@ -1225,16 +1363,25 @@ export default function Page() {
                 </SidebarPreview>
                 <CodeSnippet
                   id="sidebar-expanded"
-                  code={`<span class="keyword">import</span> SidebarVariant <span class="keyword">from</span> <span class="string">"./components/SidebarVariant"</span>;
+                  code={`"use client";
 
-<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
-  <span class="keyword">const</span> handleSelect = (item) => {
-    console.log(<span class="string">"Selected:"</span>, item);
-    <span class="comment">// Handle navigation or state change</span>
-  };
+import { useState } from "react";
+import { SidebarVariant } from "styled-lukman";
 
-  <span class="keyword">return</span> <span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"expanded"</span> <span class="attr">onSelect</span>={handleSelect} <span class="tag">/&gt;</span>;
-}`}
+export default function Page() {
+  const [active, setActive] = useState("header");
+
+  return (
+    <div style={{ display: "flex", gap: 16 }}>
+      <SidebarVariant variant="expanded" onSelect={setActive} />
+      <main style={{ padding: 16 }}>
+        <h2>Active: {active}</h2>
+        <p>Isi section {active}…</p>
+      </main>
+    </div>
+  );
+}
+`}
                 />
               </div>
               <div>
@@ -1244,16 +1391,25 @@ export default function Page() {
                 </SidebarPreview>
                 <CodeSnippet
                   id="sidebar-floating"
-                  code={`<span class="keyword">import</span> SidebarVariant <span class="keyword">from</span> <span class="string">"./components/SidebarVariant"</span>;
+                  code={`"use client";
 
-<span class="keyword">function</span> <span class="tag">MyComponent</span>() {
-  <span class="keyword">const</span> handleSelect = (item) => {
-    console.log(<span class="string">"Selected:"</span>, item);
-    <span class="comment">// Handle navigation or state change</span>
-  };
+import { useState } from "react";
+import { SidebarVariant } from "styled-lukman";
 
-  <span class="keyword">return</span> <span class="tag">&lt;SidebarVariant</span> <span class="attr">variant</span>=<span class="string">"floating"</span> <span class="attr">onSelect</span>={handleSelect} <span class="tag">/&gt;</span>;
-}`}
+export default function Page() {
+  const [active, setActive] = useState("header");
+
+  return (
+    <div style={{ display: "flex", gap: 16 }}>
+      <SidebarVariant variant="floating" onSelect={setActive} />
+      <main style={{ padding: 16 }}>
+        <h2>Active: {active}</h2>
+        <p>Isi section {active}…</p>
+      </main>
+    </div>
+  );
+}
+`}
                 />
               </div>
             </SidebarGrid>
@@ -1267,7 +1423,7 @@ export default function Page() {
 
   return (
     <>
-      <MainHeader>HEADER</MainHeader>
+      <MainHeader>✦ Styled-Lukman UI ✦</MainHeader>
       <Container>
         <MobileMenuButton onClick={toggleSidebar}>
           <FaBars size={24} />
@@ -1306,7 +1462,7 @@ export default function Page() {
           {renderContent()}
         </MainContent>
       </Container>
-      <MainFooter>Lukman Hairomin</MainFooter>
+      <MainFooter>2026 Styled-Lukman Design System — Build faster. Look better. Made with by Lukman Hairomin</MainFooter>
     </>
   );
 }
