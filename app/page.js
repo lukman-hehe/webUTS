@@ -649,8 +649,8 @@ export default function Page() {
   // Data untuk Card Component
   const cardData = {
     elevated: {
-      title: "Pemandangan apa nih kids?",
-      description: "Panorama laut yang menakjubkan dengan fasilitas mewah",
+      title: "Pemandangan Tanaman Hijau",
+      description: "Panorama Tanaman Hijau yang menakjubkan dengan fasilitas mewah",
       image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80",
       price: "Rp 5.250.000",
       rating: "4.9",
