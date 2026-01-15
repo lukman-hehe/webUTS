@@ -1510,7 +1510,6 @@ export default function Page() {
         <MobileOverlay $isOpen={isSidebarOpen} onClick={closeSidebar} />
 
         <Sidebar $isOpen={isSidebarOpen}>
-          <SidebarTitle>SIDEBAR</SidebarTitle>
           <ThemeToggle $isDark={isDarkMode} onClick={toggleTheme}>
             {isDarkMode ? <FaSun /> : <FaMoon />}
             {isDarkMode ? 'Light Mode' : 'Dark Mode'}
