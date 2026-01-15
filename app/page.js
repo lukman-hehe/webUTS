@@ -34,7 +34,9 @@ const MainHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   padding: 1rem 0;
   font-size: 1.5rem;
   font-weight: 700;
@@ -43,11 +45,15 @@ const MainHeader = styled.header`
   margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    right: 0;
     font-size: 1.2rem;
     padding: 0.8rem 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     justify-content: flex-start;
     gap: 1rem;
+    border-radius: 0;
   }
 `;
 
@@ -77,6 +83,10 @@ const Container = styled.div`
   background: var(--background);
   position: relative;
   overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding-top: 3.5rem;
+  }
 `;
 
 const MobileOverlay = styled.div`
@@ -114,10 +124,10 @@ const MobileMenuButton = styled.button`
 
 const Sidebar = styled.aside`
   position: fixed;
-  top: 0;
+  top: 4rem;
   left: 0;
   width: 280px;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   background: #002244;
   color: white;
   display: flex;
@@ -128,8 +138,11 @@ const Sidebar = styled.aside`
   transition: transform 0.3s ease-in-out;
 
   @media (max-width: 768px) {
+    top: 0;
+    height: 100vh;
     transform: ${({ $isOpen }) => ($isOpen ? "translateX(0)" : "translateX(-100%)")};
     width: 260px;
+    z-index: 200;
   }
 `;
 
