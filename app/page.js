@@ -8,6 +8,7 @@ import {
   FaArrowRight,
   FaInfoCircle,
   FaBars,
+  FaTimes,
   FaCopy,
   FaCheck,
   FaHeart,
@@ -30,7 +31,10 @@ const MainHeader = styled.header`
   width: 100%;
   background: #002244;
   color: white;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   padding: 1rem 0;
   font-size: 1.5rem;
   font-weight: 700;
@@ -40,8 +44,10 @@ const MainHeader = styled.header`
 
   @media (max-width: 768px) {
     font-size: 1.2rem;
-    padding: 0.8rem 0;
+    padding: 0.8rem 1rem;
     margin-bottom: 1rem;
+    justify-content: flex-start;
+    gap: 1rem;
   }
 `;
 
@@ -90,17 +96,14 @@ const MobileOverlay = styled.div`
 
 const MobileMenuButton = styled.button`
   display: none;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 20;
   background: var(--primary);
   color: white;
   border: none;
-  padding: 0.8rem;
+  padding: 0.6rem;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  flex-shrink: 0;
 
   @media (max-width: 768px) {
     display: flex;
@@ -130,6 +133,30 @@ const Sidebar = styled.aside`
   }
 `;
 
+
+const SidebarCloseButton = styled.button`
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 
 const SidebarTitle = styled.h2`
   font-size: 1.2rem;
@@ -163,6 +190,10 @@ const ThemeToggle = styled.button`
 
   svg {
     font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 3.5rem;
   }
 `;
 
@@ -1501,15 +1532,20 @@ export default function Page() {
 
   return (
     <>
-      <MainHeader>✦ Styled-Hairomin UI ✦</MainHeader>
-      <Container>
+      <MainHeader>
         <MobileMenuButton onClick={toggleSidebar}>
-          <FaBars size={24} />
+          <FaBars size={20} />
         </MobileMenuButton>
+        <span>✦ Styled-Hairomin UI ✦</span>
+      </MainHeader>
+      <Container>
 
         <MobileOverlay $isOpen={isSidebarOpen} onClick={closeSidebar} />
 
         <Sidebar $isOpen={isSidebarOpen}>
+          <SidebarCloseButton onClick={closeSidebar}>
+            <FaTimes size={20} />
+          </SidebarCloseButton>
           <ThemeToggle $isDark={isDarkMode} onClick={toggleTheme}>
             {isDarkMode ? <FaSun /> : <FaMoon />}
             {isDarkMode ? 'Light Mode' : 'Dark Mode'}
